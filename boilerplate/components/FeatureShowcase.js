@@ -202,12 +202,13 @@ const FeatureShowcase = ({ className = '' }) => {
         <div
           ref={containerRef}
           className="relative overflow-hidden"
+          style={{ touchAction: isMobile ? 'pan-x' : 'auto' }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           <div
-            className={`flex transition-transform duration-500 ease-out ${
+            className={`flex flex-row transition-transform duration-500 ease-out ${
               isMobile ? '' : 'justify-center'
             }`}
             style={{
@@ -217,7 +218,7 @@ const FeatureShowcase = ({ className = '' }) => {
             {features.map((feature, index) => (
               <div
                 key={feature.id}
-                className={`w-full flex-shrink-0 ${
+                className={`min-w-full w-full flex-shrink-0 ${
                   !isMobile && index !== activeTab ? 'hidden' : ''
                 }`}
               >
