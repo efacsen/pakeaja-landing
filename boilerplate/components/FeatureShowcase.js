@@ -6,6 +6,7 @@ const FeatureShowcase = ({ className = '' }) => {
   const [activeTab, setActiveTab] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const carouselRef = useRef(null)
+  const aiCardRef = useRef(null)
 
   const features = [
     {
@@ -100,6 +101,17 @@ const FeatureShowcase = ({ className = '' }) => {
     if (newIndex !== activeTab) setActiveTab(newIndex)
   }
 
+  // Function to horizontally center the AI card in the carousel
+  const scrollToAICard = () => {
+    if (!carouselRef.current || !aiCardRef.current) return;
+    const carousel = carouselRef.current;
+    const card = aiCardRef.current;
+    const carouselRect = carousel.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const scrollLeft = carousel.scrollLeft + (cardRect.left - carouselRect.left) - (carouselRect.width / 2 - cardRect.width / 2);
+    carousel.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  }
+
   // Mobile carousel scroll-to-index
   useEffect(() => {
     // Removed scrollIntoView to prevent auto-scroll to top after swipe or dot click
@@ -143,9 +155,9 @@ const FeatureShowcase = ({ className = '' }) => {
                   className="min-w-[85vw] max-w-[85vw] mr-4 snap-center flex-shrink-0"
                   style={{ scrollSnapAlign: 'center' }}
                 >
-                  <div className="glass-card p-6 rounded-2xl h-full flex flex-col justify-between shadow-lg dark:bg-gray-900/80">
+                  <div ref={feature.id === 'ai-assistant' ? aiCardRef : undefined} className="p-8 rounded-2xl bg-white/90 backdrop-blur-md border border-white/60 shadow-2xl dark:bg-gray-900/70 dark:border-white/10 h-full flex flex-col justify-between">
                     {feature.id === 'ai-assistant' ? (
-                      <AIShowcase />
+                      <AIShowcase scrollToAICard={scrollToAICard} />
                     ) : (
                       <div className="space-y-4">
                         <div className="flex items-center gap-4 mb-2">
@@ -154,10 +166,10 @@ const FeatureShowcase = ({ className = '' }) => {
                           </div>
                           <div>
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{feature.title}</h3>
-                            <p className="text-xs text-gray-500 dark:text-gray-300">{feature.subtitle}</p>
+                            <p className="text-xs text-gray-700 dark:text-gray-300">{feature.subtitle}</p>
                           </div>
                         </div>
-                        <p className="text-base text-gray-700 dark:text-gray-100 leading-relaxed">{feature.description}</p>
+                        <p className="text-base text-gray-900 dark:text-white leading-relaxed">{feature.description}</p>
                         <ul className="space-y-2">
                           {feature.points.map((point, pointIndex) => (
                             <li key={pointIndex} className="flex items-start gap-2">

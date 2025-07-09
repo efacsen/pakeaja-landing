@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 export default function EmailForm({ 
   formId, 
-  placeholder = "Email aktif Anda", 
-  buttonText = "Daftar Sekarang",
+  placeholder = "Email aktif lu bro", 
+  buttonText = "Cobain Gratis, Nggak Ribet!",
   className = ""
 }) {
   const [email, setEmail] = useState('')
@@ -90,19 +90,19 @@ export default function EmailForm({
           className="btn btn-primary sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label={isSubmitting ? 'Submitting...' : buttonText}
         >
-          {isSubmitting ? 'Bentar ya...' : buttonText}
+          {isSubmitting ? 'Bentar bro, lagi proses...' : buttonText}
         </button>
       </div>
       
       {submitStatus === 'success' && (
         <div className="text-success-600 font-semibold bg-success-50 p-3 rounded-lg border border-success-200 animate-fade-in" role="alert">
-          ✅ Mantap! Cek email buat aktifasi akun gratis kamu 👍
+          ✅ Mantap bro! Cek email lu, link aktivasi udah dikirim. Welcome to the club! 🎉
         </div>
       )}
       
       {submitStatus === 'error' && (
         <div className="text-red-600 font-semibold bg-red-50 p-3 rounded-lg border border-red-200 animate-fade-in" role="alert">
-          ❌ Waduh, ada error. Pastikan email kamu benar dan coba lagi ya!
+          ❌ Waduh, ada yang error nih. Cek email lu udah bener belum, terus coba lagi ya bro!
         </div>
       )}
     </form>

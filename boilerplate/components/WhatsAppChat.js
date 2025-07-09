@@ -11,7 +11,7 @@ const WhatsAppChat = ({ className = '' }) => {
       sender: 'Budi Santoso',
       avatar: 'BS',
       time: '10:24',
-      message: 'Bro, ada yang tau app buat manage proyek cat ga? Gw cape banget nulis manual terus 😩',
+      message: 'Bro, ada yang tau app buat manage proyek cat ga? Gue cape banget nulis manual terus, pegal tangan 😩',
       type: 'text'
     },
     {
@@ -19,7 +19,7 @@ const WhatsAppChat = ({ className = '' }) => {
       sender: 'Andi Wijaya',
       avatar: 'AW',
       time: '10:25',
-      message: 'Sama sih, gw juga butuh. Client sering lupa bayar DP. Ada yang bilang bayar besok, besoknya ilang 😂',
+      message: 'Waduh sama banget! Client gue sering lupa bayar DP. Bilang "besok transfer ya bang", besoknya malah ghoib 😂',
       type: 'text'
     },
     {
@@ -27,7 +27,7 @@ const WhatsAppChat = ({ className = '' }) => {
       sender: 'Sari Indah',
       avatar: 'SI',
       time: '10:26',
-      message: 'Gw pengen banget ada yang bisa tracking progress project real-time. Capek koordinasi via WA mulu',
+      message: 'Gue pengen banget ada yang bisa tracking progress project real-time. Capek koordinasi via WA mulu, pusing kepala!',
       type: 'text'
     },
     {
@@ -37,14 +37,14 @@ const WhatsAppChat = ({ className = '' }) => {
       time: '10:27',
       message: '🎤 Voice message (0:15)',
       type: 'voice',
-      voiceText: 'Eh guys, gw udah coba berbagai cara tapi tetep aja ribet. Mau bikin invoice yang rapi susah banget'
+      voiceText: 'Eh guys, gue udah coba berbagai cara tapi tetep aja ribet. Mau bikin invoice yang rapi susah banget, client jadi meragukan kualitas kita'
     },
     {
       id: 5,
       sender: 'Maya Putri',
       avatar: 'MP',
       time: '10:28',
-      message: 'Foto project gw sering ilang di chat. Susah banget kalau mau tunjukin progress ke client 📸',
+      message: 'Foto project gue sering ilang di chat. Susah banget kalau mau tunjukin progress ke client, jadi keliatan gak profesional 📸',
       type: 'text'
     },
     {
@@ -52,7 +52,7 @@ const WhatsAppChat = ({ className = '' }) => {
       sender: 'Denny Kurniawan',
       avatar: 'DK',
       time: '10:29',
-      message: 'Gw udah kehilangan 10 juta lebih gara-gara client PHP. Kalau ada sistem yang bisa reminder otomatis pasti membantu banget',
+      message: 'Gue udah kehilangan 10 juta lebih gara-gara client PHP (Pemberi Harapan Palsu). Kalau ada sistem reminder otomatis pasti membantu banget!',
       type: 'text'
     },
     {
@@ -60,7 +60,7 @@ const WhatsAppChat = ({ className = '' }) => {
       sender: 'Lina Sari',
       avatar: 'LS',
       time: '10:30',
-      message: 'Setuju banget! Gw juga pengen ada app yang bisa kasih estimasi biaya otomatis. Sering salah hitung soalnya 😅',
+      message: 'Setuju banget bro! Gue juga pengen ada app yang bisa kasih estimasi biaya otomatis. Sering salah hitung, client jadi komplain 😅',
       type: 'text'
     },
     {
@@ -68,7 +68,7 @@ const WhatsAppChat = ({ className = '' }) => {
       sender: 'PakeAja Team',
       avatar: 'PT',
       time: '10:31',
-      message: 'Hai semua! Kami dengar keluhan kalian. Kami lagi develop solusi untuk semua masalah ini. Stay tuned! 🚀',
+      message: 'Hai semua! Kami dengar keluhan kalian. Kami lagi develop solusi khusus buat semua masalah ini. Stay tuned bro! 🚀',
       type: 'text',
       isBot: true
     }
@@ -226,7 +226,7 @@ const WhatsAppChat = ({ className = '' }) => {
         <div className="flex-1 bg-white dark:bg-[#2a3942] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-sm">
           <input
             type="text"
-            placeholder="Ketik pesan..."
+            placeholder="Ketik pesan bro..."
             className="w-full bg-transparent text-[#303030] dark:text-white placeholder-[#8696a0] outline-none text-sm sm:text-base"
             disabled
           />

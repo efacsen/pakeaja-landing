@@ -3,69 +3,69 @@
 
 export const LandingPageCopy = {
   hero: {
-    headline: "Beres Tanpa Ribet, Cuan Lancar!",
-    subheadline: "Atur proyek cat dari HP. Client bayar cepat, bisnis makin profesional.",
-    cta: "Cobain Gratis",
-    trustIndicator: "Udah dipake 500+ aplikator cat se-Indonesia"
+    headline: "Bro, Udah Waktunya Naik Kelas! 🚀",
+    subheadline: "Dari WA berantakan ke sistem pro yang bikin client respect. Cuan makin lancar, bisnis makin kece! 💪",
+    cta: "Langsung Gas, Gratis Dulu!",
+    trustIndicator: "Udah dipake 500+ aplikator cat se-Indonesia yang udah males jadi 'tukang besok transfer' 😎"
   },
 
   painPoints: {
-    sectionHeader: "Masih Begini Cara Kerjanya?",
+    sectionHeader: "Masih Begini Aja Gan? Kasihan Banget... 😅",
     points: [
       {
         id: 'whatsapp-chaos',
         icon: '💬',
-        headline: "Chat Proyek Ilang di WhatsApp",
-        description: "Scroll sampe pegel nyari ukuran ruangan client 2 minggu lalu. Info penting ketimbun chat grup RT."
+        headline: "Chat Proyek Ilang di WA, Pusing Deh!",
+        description: "Scroll sampe mata perih nyari ukuran ruangan client 2 minggu lalu. Udah gitu masih belum ketemu!"
       },
       {
         id: 'payment-delays',
         icon: '💸',
-        headline: "Nungguin DP Sampe Berjenggot",
-        description: "Client bilang 'besok transfer'. Besoknya lupa. Lu yang rugi beli material duluan."
+        headline: "Jadi Aplikator 'Besok Transfer' Terus",
+        description: "Client bilang 'besok ya bang'. Besoknya lupa. Lu yang gigit jari, tagihan numpuk di rumah."
       },
       {
         id: 'unprofessional-quotes',
         icon: '📝',
-        headline: "Penawaran Cuma di Kertas Buram",
-        description: "Nulis tangan di bon warung. Client mikir 'ini tukang beneran apa bukan ya?'"
+        headline: "Penawaran Nulis Tangan di Kertas Buram",
+        description: "Nulis di bon warung kayak beli gorengan. Client mikir 'ini tukang beneran atau gimana sih?'"
       }
     ]
   },
 
   solutions: {
-    sectionHeader: "Upgrade Jadi Aplikator Profesional",
+    sectionHeader: "Upgrade Jadi Sultan Cat! 👑",
     points: [
       {
         id: 'organized-projects',
         icon: '📱',
-        headline: "Semua Proyek Rapi di Satu Aplikasi",
-        description: "Gak perlu scroll WhatsApp lagi. Foto, ukuran, warna cat, semua tersimpan rapi per client."
+        headline: "Semua Proyek Rapi, Gak Pake Ribet",
+        description: "Foto, ukuran, warna cat, semua tersimpan rapi per client. Tinggal buka HP, langsung nemu semuanya!"
       },
       {
         id: 'fast-payment',
         icon: '⚡',
-        headline: "Invoice Digital, Duit Cepet Masuk",
-        description: "Kirim invoice resmi langsung ke HP client. Ada tombol bayar online, gak pake alesan lagi."
+        headline: "Invoice Digital, Duit Langsung Masuk",
+        description: "Kirim invoice kece dengan logo usaha. Ada tombol bayar online, gak ada alesan 'nanti dulu ya bang'."
       },
       {
         id: 'professional-image',
         icon: '⭐',
-        headline: "Penawaran Keren Bikin Client Percaya",
-        description: "Template penawaran profesional dengan logo usaha. Client langsung yakin sama kualitas kerja lu."
+        headline: "Penawaran Pro Bikin Client Auto Percaya",
+        description: "Template profesional yang bikin client bilang 'wah, ini aplikator beneran nih!'. Langsung deal!"
       }
     ]
   },
 
   emailCapture: {
-    headline: "Buruan, Slot Gratis Terbatas!",
-    subheadline: "Khusus 100 aplikator pertama dapet akses gratis selamanya",
-    inputPlaceholder: "Email aktif Anda",
-    buttonText: "Daftar Sekarang",
-    loadingText: "Bentar ya...",
-    successMessage: "Mantap! Cek email buat aktifasi 👍",
-    privacyNote: "Tenang, email lu aman. Gak bakal di-spam.",
-    noCreditCard: "⚡ Gak perlu kartu kredit • Langsung pake"
+    headline: "Buruan Bro, Slot Gratis Terbatas! ⏰",
+    subheadline: "Khusus 100 aplikator pertama yang males jadi 'tukang besok transfer' - akses gratis selamanya!",
+    inputPlaceholder: "Email aktif lu bro",
+    buttonText: "Cobain Gratis, Nggak Ribet!",
+    loadingText: "Bentar bro, lagi proses...",
+    successMessage: "Mantap bro! Cek email lu, link aktivasi udah dikirim. Welcome to the club! 🎉",
+    privacyNote: "Tenang gan, email lu aman. Gak bakal di-spam kayak grup WA sebelah.",
+    noCreditCard: "⚡ Gak perlu kartu kredit • Langsung pake • Bebas cancel kapan aja"
   },
 
   navigation: {
@@ -76,29 +76,29 @@ export const LandingPageCopy = {
   },
 
   footer: {
-    tagline: "Dibuat oleh aplikator, untuk aplikator",
+    tagline: "Dibuat oleh aplikator, untuk aplikator. Made with ❤️ buat para jagoan cat Indonesia! 🇮🇩",
     copyright: `© ${new Date().getFullYear()} PakeAja. All rights reserved.`
   },
 
   socialProof: {
-    banner: "Join 500+ aplikator yang udah naik level 🚀"
+    banner: "Join 500+ aplikator yang udah naik level jadi sultan cat! 🚀"
   },
 
   testimonials: [
     {
-      quote: "Dulu client ngejar-ngejar minta update. Sekarang tinggal share link progress. Hemat waktu banget!",
+      quote: "Dulu client ngejar-ngejar minta update sampe pusing. Sekarang tinggal share link progress. Hemat waktu banget bro!",
       name: "Pak Budi",
       location: "Jakarta Selatan",
       role: "Aplikator Cat Professional"
     },
     {
-      quote: "Invoice digital bikin pembayaran cepet. Gak ada lagi alesan 'lupa transfer' dari client.",
+      quote: "Invoice digital bikin pembayaran cepet banget. Gak ada lagi alesan 'lupa transfer' dari client. Mantap!",
       name: "Mas Agus",
       location: "Surabaya",
       role: "Aplikator Cat Professional"
     },
     {
-      quote: "Penawaran jadi keliatan profesional. Client lebih percaya, order makin banyak!",
+      quote: "Penawaran jadi keliatan profesional abis. Client lebih percaya, order makin banyak! Cuan naik drastis!",
       name: "Pak Dedi",
       location: "Bandung",
       role: "Aplikator Cat Professional"
@@ -107,24 +107,24 @@ export const LandingPageCopy = {
 
   faq: [
     {
-      question: "Gratis beneran?",
-      answer: "Iya, gratis buat 100 aplikator pertama. Selamanya. Gak ada biaya tersembunyi."
+      question: "Gratis beneran bro?",
+      answer: "Iya dong! Gratis buat 100 aplikator pertama. Selamanya. Gak ada biaya tersembunyi atau tipu-tipu."
     },
     {
       question: "Ribet gak pakenya?",
-      answer: "Gampang banget! Kayak pake WhatsApp aja. 5 menit langsung paham."
+      answer: "Gampang banget! Kayak pake WhatsApp aja. 5 menit langsung paham. Gak perlu kursus segala."
     },
     {
       question: "Client harus install app?",
-      answer: "Gak perlu! Client tinggal buka link dari HP mereka. Simple."
+      answer: "Gak perlu bro! Client tinggal buka link dari HP mereka. Simple banget."
     },
     {
       question: "Data aman gak?",
-      answer: "Aman 100%. Data di-encrypt dan backup otomatis tiap hari."
+      answer: "Aman 100%! Data di-encrypt dan backup otomatis tiap hari. Gak bakalan ilang."
     },
     {
       question: "Bisa buat berapa proyek?",
-      answer: "Unlimited! Mau 10 atau 100 proyek, bebas aja."
+      answer: "Unlimited gan! Mau 10 atau 100 proyek, bebas aja. Gak ada batas."
     }
   ],
 
@@ -144,8 +144,8 @@ export const LandingPageCopy = {
 
   // Alternative headlines for A/B testing
   alternativeHeadlines: [
-    "Aplikator Cat Jadi Profesional!",
-    "Gak Pusing, Cuan Mulus!",
+    "Aplikator Cat Jadi Sultan! 👑",
+    "Gak Pusing, Cuan Mulus Bro!",
     "Kerja Rapi, Duit Masuk Cepat!"
   ],
 
@@ -158,10 +158,10 @@ export const LandingPageCopy = {
 
   // Call to actions variants
   ctaVariants: {
-    primary: "Cobain Gratis",
-    secondary: "Daftar Sekarang",
-    tertiary: "Mulai Gratis",
-    quaternary: "Yuk Mulai!"
+    primary: "Langsung Gas, Gratis Dulu!",
+    secondary: "Cobain Gratis, Nggak Ribet!",
+    tertiary: "Mulai Gratis Bro!",
+    quaternary: "Yuk Mulai, Gak Rugi!"
   }
 };
 
@@ -183,10 +183,10 @@ export const formatRupiah = (amount: number): string => {
 
 // WhatsApp message templates
 export const whatsappTemplates = {
-  welcome: "Halo! Selamat datang di PakeAja 👋",
+  welcome: "Halo bro! Selamat datang di PakeAja 👋",
   projectUpdate: "Update proyek: {projectName} - {status}",
-  paymentReminder: "Reminder: Invoice {invoiceNumber} jatuh tempo hari ini",
-  thankYou: "Terima kasih! Pembayaran {amount} sudah diterima ✅"
+  paymentReminder: "Reminder bro: Invoice {invoiceNumber} jatuh tempo hari ini",
+  thankYou: "Mantap! Pembayaran {amount} sudah diterima. Makasih bro! ✅"
 };
 
 export default LandingPageCopy;

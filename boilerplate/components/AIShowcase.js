@@ -7,23 +7,25 @@ import {
 import { StatusBadge, DataCard, ProgressBar, ActionButton, LoadingSkeleton } from './AIComponents'
 
 const SUGGESTED_QUESTIONS = [
-  'Berapa kebutuhan cat untuk proyek Gudang Peluru Bandung?',
-  'Berapa rata-rata margin untuk material A di bulan Februari?',
+  'Berapa liter cat buat proyek Gudang Peluru Bandung?',
+  'Cek margin material A bulan ini dong!',
   'Cari dokumen TDS material A',
-  'Kapan Invoice Proyek D jatuh tempo?',
-  'Berapa orang dari sales team yang telah mencapai target bulan ini?',
+  'Kapan Invoice Proyek D jatuh tempo ya?',
+  'Berapa sales team yang udah capai target bulan ini?',
 ]
 const MOCK_ANSWERS = {
-  'Berapa kebutuhan cat untuk proyek Gudang Peluru Bandung?': 'Proyek Gudang Peluru Bandung memiliki area Exterior 5100m², Material A memiliki daya sebar 10m²/liter dan 2 lapis, maka kebutuhan cat adalah sekitar 1020 liter.',
-  'Berapa rata-rata margin untuk material A di bulan Februari?': 'Material A memiliki margin rata-rata 28.5% di bulan Februari, dibandingkan dengan Januari sebesar 24.5%. Ada kenaikan 4% dibandingkan dengan Januari!',
-  'Cari TDS material A': 'Berikut dokumen TDS untuk material "Cat A": [Download TDS.pdf]',
-  'Kapan Invoice Proyek D jatuh tempo?': 'Invoice proyek D dengan nomor invoice INV-3232 akan jatuh tempo pada tanggal 20 April 2024. Dari 3 Invoice yang telah dikirim, 2 Invoice telah dibayar, dan 1 Invoice belum dibayar.',
-  'Berapa orang dari sales team yang telah mencapai target bulan ini?': 'Dari 5 sales team, 3 sales team telah mencapai target bulan ini, yaitu Andi Santoso (108%), Sari Wijaya (102%), dan Budi Hartono (115%). 2 sales team belum mencapai target, yaitu Deni Kurnia (87%) dan Maya Putri (94%).'
+  'Berapa liter cat buat proyek Gudang Peluru Bandung?': 'Siap bro! Proyek Gudang Peluru Bandung area exterior 5100m², pakai Material A dengan daya sebar 10m²/liter dan 2 lapis. Jadi butuh sekitar 1020 liter. Udah termasuk loss factor ya! 👍',
+  'Cek margin material A bulan ini dong!': 'Mantap nih! Material A margin rata-rata 28.5% di bulan Februari, naik dari Januari yang 24.5%. Ada kenaikan 4% - lumayan banget tuh buat cuan! 💰',
+  'Cari dokumen TDS material A': 'Ketemu bro! Ini dokumen TDS untuk material "Cat A": [Download TDS.pdf] - tinggal klik aja ya! 📄',
+  'Kapan Invoice Proyek D jatuh tempo ya?': 'Cek dulu ya bro... Invoice proyek D nomor INV-3232 jatuh tempo 20 April 2024. Dari 3 invoice yang dikirim, 2 udah dibayar, 1 belum. Jangan lupa follow up ya! 📅',
+  'Berapa sales team yang udah capai target bulan ini?': 'Oke nih! Dari 5 sales team, 3 udah capai target: Andi Santoso (108%), Sari Wijaya (102%), dan Budi Hartono (115%). Yang belum: Deni Kurnia (87%) dan Maya Putri (94%). Semangat terus! 💪'
 }
 
-const AIShowcase = () => {
+const AIShowcase = (props) => {
   const [hasMounted, setHasMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const mobileChatEndRef = useRef(null)
+  const [showQuestions, setShowQuestions] = useState(true)
   useEffect(() => {
     setHasMounted(true)
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
@@ -34,16 +36,21 @@ const AIShowcase = () => {
 
   // Mobile chat demo state
   const [mobileMessages, setMobileMessages] = useState([
-    { sender: 'ai', text: 'Halo! Saya asisten AI PakeAja. Silakan pilih atau ketik pertanyaan di bawah.' }
+    { sender: 'ai', text: 'Halo bro! Gue asisten AI PakeAja. Mau tanya apa nih? Pilih pertanyaan di bawah atau ketik sendiri!' }
   ])
   const [mobileIsTyping, setMobileIsTyping] = useState(false)
   const handleMobileQuestion = (q) => {
     setMobileMessages((msgs) => [...msgs, { sender: 'user', text: q }])
     setMobileIsTyping(true)
     setTimeout(() => {
-      setMobileMessages((msgs) => [...msgs, { sender: 'ai', text: MOCK_ANSWERS[q] || 'Maaf, saya belum bisa menjawab pertanyaan itu.' }])
+      setMobileMessages((msgs) => [...msgs, { sender: 'ai', text: MOCK_ANSWERS[q] || 'Waduh, gue belum tau jawaban yang ini bro. Coba tanya yang lain deh!' }])
       setMobileIsTyping(false)
     }, 1200)
+    setTimeout(() => {
+      mobileChatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+      if (props.scrollToAICard) props.scrollToAICard()
+    }, 0)
+    setShowQuestions(false)
   }
 
   // --- Desktop: Original Showcase ---
@@ -75,7 +82,7 @@ const AIShowcase = () => {
     setMessages([{
       id: 1,
       type: 'ai',
-      text: 'Halo! Saya AI Assistant PakeAja. Saya siap membantu Anda dengan pertanyaan seputar bisnis aplikator cat. Silakan pilih salah satu pertanyaan di bawah atau tanyakan hal lain!',
+      text: 'Halo bro! Gue AI Assistant PakeAja. Siap bantu lu dengan pertanyaan seputar bisnis aplikator cat. Mau tanya apa nih? Pilih pertanyaan di bawah atau ketik sendiri!',
       timestamp: new Date()
     }])
   }, [])
@@ -83,7 +90,7 @@ const AIShowcase = () => {
   const aiExamples = [
     {
       icon: ChartIcon,
-      question: "Berapa rata-rata margin untuk material A di bulan Februari?",
+      question: "Cek margin material A bulan ini dong!",
       response: {
         type: "cards",
         material: {
@@ -111,18 +118,18 @@ const AIShowcase = () => {
             change: { value: +2000000, unit: "Rp", status: "up" }
           }
         ],
-        insight: "Material A (Cat Dekoratif) menunjukkan peningkatan margin dari 24.5% di Januari menjadi 28.5% di Februari, dengan pertumbuhan volume penjualan 15.6%."
+        insight: "Mantap bro! Material A (Cat Dekoratif) naik margin dari 24.5% di Januari jadi 28.5% di Februari, plus volume penjualan naik 15.6%. Ini sih cuan banget!"
       }
     },
     {
       icon: CalculatorIcon,
-      question: "Berapa liter material yang dibutuhkan untuk menyelesaikan proyek B?",
+      question: "Berapa liter cat buat proyek Gudang Peluru Bandung?",
       response: {
         type: "calculation",
-        project: "Rumah Pak Budi",
+        project: "Gudang Peluru Bandung",
         details: {
-          area: "180 m²",
-          type: "Cat Interior + Eksterior",
+          area: "5100 m²",
+          type: "Cat Eksterior Gudang",
           coating: "2 lapis"
         },
         materials: [
@@ -174,12 +181,12 @@ const AIShowcase = () => {
           "5L (Galon)", 
           "20L (Pail)"
         ],
-        recommendation: "Tambah 5 liter ekstra untuk touch-up."
+        recommendation: "Saran gue: tambahin 5 liter ekstra buat touch-up ya bro, biar aman!"
       }
     },
     {
       icon: UsersIcon,
-      question: "Berapa orang dari sales team yang telah mencapai target bulan ini?",
+      question: "Berapa sales team yang udah capai target bulan ini?",
       response: {
         type: "performance",
         month: "Maret 2024",
@@ -202,7 +209,7 @@ const AIShowcase = () => {
     },
     {
       icon: DocumentIcon,
-      question: "Cari Dokumen Berita Acara Serah Terima (BAST) proyek C",
+      question: "Cari dokumen BAST proyek C dong!",
       response: {
         type: "documents",
         documents: [
@@ -235,7 +242,7 @@ const AIShowcase = () => {
     },
     {
       icon: CurrencyIcon,
-      question: "Kapan Invoice proyek D jatuh tempo?",
+      question: "Kapan Invoice Proyek D jatuh tempo ya?",
       response: {
         type: "invoices",
         invoices: [
@@ -866,7 +873,7 @@ const AIShowcase = () => {
         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
       </div>
-      <span className="text-sm text-gray-500 dark:text-gray-400">AI sedang mengetik...</span>
+      <span className="text-sm text-gray-500 dark:text-gray-400">AI lagi mikir...</span>
     </div>
   )
 
@@ -874,7 +881,7 @@ const AIShowcase = () => {
   if (isMobile) {
     return (
       <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-4 flex flex-col min-h-[340px]">
-        <div className="font-bold text-lg text-blue-700 mb-2 text-center">Coba Tanya AI PakeAja!</div>
+        <div className="font-bold text-lg text-blue-700 mb-2 text-center">Coba Tanya AI PakeAja, Bro!</div>
         <div className="flex-1 overflow-y-auto mb-3" style={{ maxHeight: 220 }}>
           {mobileMessages.map((msg, i) => (
             <div key={i} className={`flex mb-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -894,24 +901,37 @@ const AIShowcase = () => {
               <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
                 <span role="img" aria-label="AI">🤖</span>
               </div>
-              <div className="px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white text-sm animate-pulse">Mengetik...</div>
+              <div className="px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white text-sm animate-pulse">Lagi mikir...</div>
             </div>
           )}
+          <div ref={mobileChatEndRef} />
         </div>
-        <div className="flex flex-wrap gap-2 justify-center mt-2">
-          {SUGGESTED_QUESTIONS.map((q) => (
-            <button
-              key={q}
-              className="px-3 py-1 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-medium transition-colors border border-blue-200"
-              onClick={() => handleMobileQuestion(q)}
-              disabled={mobileIsTyping}
-              aria-label={`Pilih pertanyaan: ${q}`}
-            >
-              {q}
-            </button>
-          ))}
+        <div className="flex flex-col items-center mt-2">
+          {showQuestions && (
+            <div className="flex flex-wrap gap-2 justify-center mb-2">
+              {SUGGESTED_QUESTIONS.map((q) => (
+                <button
+                  key={q}
+                  className="px-3 py-1 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-medium transition-colors border border-blue-200"
+                  onClick={() => handleMobileQuestion(q)}
+                  disabled={mobileIsTyping}
+                  aria-label={`Pilih pertanyaan: ${q}`}
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+          <button
+            className="mt-1 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-blue-700 text-lg shadow border border-gray-200"
+            onClick={() => setShowQuestions((v) => !v)}
+            aria-label={showQuestions ? 'Tutup pertanyaan' : 'Buka pertanyaan'}
+            disabled={mobileIsTyping}
+          >
+            {showQuestions ? '✕' : '❓'}
+          </button>
         </div>
-        <div className="text-xs text-gray-400 mt-3 text-center">Demo AI. Jawaban bersifat simulasi.</div>
+        <div className="text-xs text-gray-400 mt-3 text-center">Demo AI aja ya bro. Jawaban bersifat simulasi.</div>
       </div>
     )
   }
@@ -925,30 +945,30 @@ const AIShowcase = () => {
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
               <StarIcon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Asisten AI</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Asisten AI Kece</h3>
           </div>
-          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Asisten Perusahaan yang Pintar</h4>
+          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Asisten Bisnis yang Jagoan!</h4>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            Asisten pintar yang akan membantu menjawab pertanyaan seputar informasi yang berada di perusahaan, memberikan insight bisnis perusahaan kamu dengan data yang ada.
+            Asisten pinter yang bakal bantu lu jawab pertanyaan seputar bisnis, kasih insight kece dari data perusahaan lu. Tinggal tanya aja, langsung dijawab!
           </p>
           
           {/* Checklist */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left max-w-2xl mx-auto">
             <div className="flex items-start gap-2">
               <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-gray-600 dark:text-gray-400">Tanya semua hal yang berhubungan dengan bisnis perusahaan kamu</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Tanya apapun soal bisnis lu, langsung dijawab</p>
             </div>
             <div className="flex items-start gap-2">
               <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-gray-600 dark:text-gray-400">Data Analisis tidak perlu repot lagi</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Analisis data gak pake ribet lagi</p>
             </div>
             <div className="flex items-start gap-2">
               <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-gray-600 dark:text-gray-400">Ambil keputusan berdasarkan real data perusahaan kamu</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Ambil keputusan berdasarkan data real perusahaan</p>
             </div>
             <div className="flex items-start gap-2">
               <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-gray-600 dark:text-gray-400">Cari Dokumen proyek, TDS hingga invoice dalam satu chatroom</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Cari dokumen proyek, TDS, invoice dalam satu chat</p>
             </div>
           </div>
         </div>
@@ -1014,7 +1034,7 @@ const AIShowcase = () => {
 
       {/* Question Suggestions */}
       <div className="border-t border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-800">
-        <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">Pilih pertanyaan:</p>
+        <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">Pilih pertanyaan bro:</p>
         <div className="flex flex-wrap gap-2">
           {aiExamples.map((example, index) => (
             <button

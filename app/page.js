@@ -3,61 +3,61 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-// Copy content
+// Copy content - "Santai tapi Serius" tone
 const copy = {
   hero: {
-    headline: "Beres Tanpa Ribet, Cuan Lancar!",
-    subheadline: "Atur proyek cat dari HP. Client bayar cepat, bisnis makin profesional.",
-    cta: "Cobain Gratis",
-    trust: "Udah dipake 500+ aplikator cat se-Indonesia"
+    headline: "Bro, Udah Waktunya Naik Kelas! 🚀",
+    subheadline: "Dari WA berantakan ke sistem pro yang bikin client respect. Cuan makin lancar, bisnis makin kece! 💪",
+    cta: "Langsung Gas, Gratis Dulu!",
+    trust: "Udah dipake 500+ aplikator cat se-Indonesia yang udah males jadi 'tukang besok transfer' 😎"
   },
   painPoints: {
-    title: "Masih Begini Cara Kerjanya?",
+    title: "Masih Begini Aja Gan? Kasihan Banget... 😅",
     items: [
       {
         icon: "💬",
-        title: "Chat Proyek Ilang di WhatsApp",
-        desc: "Scroll sampe pegel nyari ukuran ruangan client 2 minggu lalu."
+        title: "Chat Proyek Ilang di WA, Pusing Deh!",
+        desc: "Scroll sampe mata perih nyari ukuran ruangan client 2 minggu lalu. Udah gitu masih belum ketemu!"
       },
       {
         icon: "💸",
-        title: "Nungguin DP Sampe Berjenggot",
-        desc: "Client bilang 'besok transfer'. Besoknya lupa. Lu yang rugi."
+        title: "Jadi Aplikator 'Besok Transfer' Terus",
+        desc: "Client bilang 'besok ya bang'. Besoknya lupa. Lu yang gigit jari, tagihan numpuk di rumah."
       },
       {
         icon: "📝",
-        title: "Penawaran Cuma di Kertas Buram",
-        desc: "Nulis tangan di bon warung. Client mikir 'ini tukang beneran?'"
+        title: "Penawaran Nulis Tangan di Kertas Buram",
+        desc: "Nulis di bon warung kayak beli gorengan. Client mikir 'ini tukang beneran atau gimana sih?'"
       }
     ]
   },
   solutions: {
-    title: "Upgrade Jadi Aplikator Profesional",
+    title: "Upgrade Jadi Sultan Cat! 👑",
     items: [
       {
         icon: "📱",
-        title: "Semua Proyek Rapi di Satu Aplikasi",
-        desc: "Foto, ukuran, warna cat, semua tersimpan rapi per client."
+        title: "Semua Proyek Rapi, Gak Pake Ribet",
+        desc: "Foto, ukuran, warna cat, semua tersimpan rapi per client. Tinggal buka HP, langsung nemu semuanya!"
       },
       {
         icon: "⚡",
-        title: "Invoice Digital, Duit Cepet Masuk",
-        desc: "Kirim invoice resmi. Ada tombol bayar online, gak pake alesan."
+        title: "Invoice Digital, Duit Langsung Masuk",
+        desc: "Kirim invoice kece dengan logo usaha. Ada tombol bayar online, gak ada alesan 'nanti dulu ya bang'."
       },
       {
         icon: "⭐",
-        title: "Penawaran Keren Bikin Client Percaya",
-        desc: "Template profesional dengan logo usaha. Client langsung yakin."
+        title: "Penawaran Pro Bikin Client Auto Percaya",
+        desc: "Template profesional yang bikin client bilang 'wah, ini aplikator beneran nih!'. Langsung deal!"
       }
     ]
   },
   emailCapture: {
-    headline: "Buruan, Slot Gratis Terbatas!",
-    subheadline: "Khusus 100 aplikator pertama dapet akses gratis selamanya",
-    placeholder: "Email aktif Anda",
-    button: "Daftar Sekarang",
-    privacy: "Tenang, email lu aman. Gak bakal di-spam.",
-    noCreditCard: "⚡ Gak perlu kartu kredit • Langsung pake"
+    headline: "Buruan Bro, Slot Gratis Terbatas! ⏰",
+    subheadline: "Khusus 100 aplikator pertama yang males jadi 'tukang besok transfer' - akses gratis selamanya!",
+    placeholder: "Email aktif lu bro",
+    button: "Cobain Gratis, Nggak Ribet!",
+    privacy: "Tenang gan, email lu aman. Gak bakal di-spam kayak grup WA sebelah.",
+    noCreditCard: "⚡ Gak perlu kartu kredit • Langsung pake • Bebas cancel kapan aja"
   }
 }
 
@@ -228,19 +228,19 @@ export default function LandingPage() {
                   disabled={isSubmitting}
                   className="btn btn-primary sm:w-auto"
                 >
-                  {isSubmitting ? 'Bentar ya...' : copy.emailCapture.button}
+                  {isSubmitting ? 'Bentar bro, lagi proses...' : copy.emailCapture.button}
                 </button>
               </div>
               
               {submitStatus === 'success' && (
                 <div className="text-success-600 font-semibold bg-success-50 p-3 rounded-lg border border-success-200">
-                  ✅ Mantap! Cek email buat aktifasi akun gratis kamu 👍
+                  ✅ Mantap bro! Cek email lu, link aktivasi udah dikirim. Welcome to the club! 🎉
                 </div>
               )}
               
               {submitStatus === 'error' && (
                 <div className="text-red-600 font-semibold bg-red-50 p-3 rounded-lg border border-red-200">
-                  ❌ Waduh, ada error. Cek email kamu dan coba lagi ya!
+                  ❌ Waduh, ada yang error nih. Cek email lu udah bener belum, terus coba lagi ya bro!
                 </div>
               )}
               
@@ -259,7 +259,7 @@ export default function LandingPage() {
       <footer className="py-8 bg-gray-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
-            © 2024 PakeAja. Dibuat oleh aplikator, untuk aplikator.
+            © 2024 PakeAja. Dibuat oleh aplikator, untuk aplikator. Made with ❤️ buat para jagoan cat Indonesia! 🇮🇩
           </p>
         </div>
       </footer>

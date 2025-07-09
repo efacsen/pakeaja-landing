@@ -65,7 +65,7 @@ export default function ComingSoonCombinedPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg sm:text-xl">P A D</span>
+                  <span className="font-bold text-lg sm:text-xl text-black dark:text-white">P A D</span>
                 </div>
                 <div>
                   <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-primary">Pake Aja Dulu</h1>
@@ -134,7 +134,7 @@ export default function ComingSoonCombinedPage() {
             <div className="text-center">
               <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm sm:text-lg">P A D</span>
+                  <span className="font-bold text-sm sm:text-lg text-black dark:text-white">P A D</span>
                 </div>
                 <h4 className="text-lg sm:text-xl font-bold text-primary">Pake Aja Dulu</h4>
               </div>
