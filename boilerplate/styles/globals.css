@@ -1,56 +1,278 @@
+/* Base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
-@layer base {
-  html {
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+  max-width: 100vw; /* Ensure body doesn't exceed viewport width */
+}
+
+/* Prevent horizontal overflow on all elements */
+* {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  max-width: 100%;
+}
+
+/* Mobile overflow fixes */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden !important;
   }
   
-  /* Mobile-first typography */
-  body {
-    @apply text-sm sm:text-base;
+  /* Ensure all containers respect viewport width */
+  .container {
+    max-width: 100vw !important;
+    overflow-x: hidden;
+  }
+  
+  /* Fix table overflow on mobile */
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  
+  /* Responsive table wrapper */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+  
+  /* Prevent text from breaking layout */
+  .mobile-text-wrap {
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  /* Mobile grid fixes */
+  .mobile-grid-fix {
+    display: block !important;
+  }
+  
+  .mobile-grid-fix > * {
+    width: 100% !important;
+    margin-bottom: 1rem;
   }
 }
 
-@layer utilities {
-  .container {
-    @apply mx-auto px-4 sm:px-6 lg:px-8;
+/* Mobile typography improvements */
+.mobile-h1 {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight;
+}
+
+.mobile-h2 {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight;
+}
+
+.mobile-h3 {
+  @apply text-lg sm:text-xl md:text-2xl font-semibold leading-tight;
+}
+
+.mobile-body {
+  @apply text-sm sm:text-base leading-relaxed;
+}
+
+/* Mobile spacing utilities */
+.mobile-section {
+  @apply py-8 sm:py-12 md:py-16 lg:py-20;
+}
+
+.mobile-container {
+  @apply px-4 sm:px-6 md:px-8 lg:px-12;
+}
+
+/* Mobile button optimizations */
+.btn-mobile {
+  @apply min-h-[44px] px-4 py-2 text-sm sm:text-base;
+  touch-action: manipulation;
+}
+
+/* Glass card responsive */
+.glass-card {
+  @apply backdrop-blur-md bg-white/10 dark:bg-gray-900/20 border border-white/20 dark:border-gray-700/30;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.card {
+  @apply p-4 sm:p-6 rounded-xl shadow-lg transition-all duration-300;
+}
+
+/* Input styles */
+.input {
+  @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg 
+         bg-white dark:bg-gray-800 text-gray-900 dark:text-white
+         focus:outline-none focus:ring-2 focus:ring-blue-500/50 
+         transition-all duration-300;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 text-gray-900 border border-gray-300;
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  @apply p-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-all duration-300 
+         border border-gray-300 hover:border-gray-400;
+}
+
+.icon-wrapper {
+  @apply transition-transform duration-300 hover:scale-110;
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.4s ease-out;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Smooth scrolling for internal links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-white dark:ring-offset-gray-900;
+}
+
+/* Mobile-specific table styles */
+@media (max-width: 640px) {
+  /* Stack table cells vertically on mobile */
+  .mobile-table {
+    display: block;
+    width: 100%;
   }
   
-  /* Mobile-optimized touch targets */
-  .btn-mobile {
-    @apply min-h-[44px] min-w-[44px] touch-manipulation;
+  .mobile-table thead {
+    display: none;
   }
   
-  /* Mobile spacing utilities */
-  .mobile-section {
-    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+  .mobile-table tbody {
+    display: block;
+    width: 100%;
   }
   
-  .mobile-container {
-    @apply px-4 sm:px-6 md:px-8;
+  .mobile-table tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    background: white;
   }
   
-  /* Mobile typography scale */
-  .mobile-h1 {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  .mobile-table td {
+    display: block;
+    width: 100%;
+    text-align: left !important;
+    padding: 0.5rem 0;
+    border: none;
   }
   
-  .mobile-h2 {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  .mobile-table td:before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    color: #6b7280;
+  }
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent code blocks from breaking layout */
+pre, code {
+  overflow-x: auto;
+  word-wrap: break-word;
+}
+
+/* Additional mobile safety */
+@media (max-width: 768px) {
+  /* Force any potentially wide elements to fit */
+  .force-mobile-width {
+    max-width: 100vw !important;
+    overflow-x: auto;
   }
   
-  .mobile-h3 {
-    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  /* Responsive grid that becomes single column on mobile */
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
-  .mobile-body {
-    @apply text-sm sm:text-base md:text-lg;
+  @media (min-width: 640px) {
+    .responsive-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   
-  .mobile-small {
-    @apply text-xs sm:text-sm;
+  @media (min-width: 1024px) {
+    .responsive-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }

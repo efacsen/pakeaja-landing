@@ -274,62 +274,125 @@ const AIShowcase = () => {
               </div>
             </div>
             
-            {/* Comparison Table - Transposed */}
+            {/* Comparison Table - Mobile Responsive */}
             <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-gray-50 dark:bg-gray-900">
-                  <tr>
-                    <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Bulan</th>
-                    <th className="text-center px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Margin (%)</th>
-                    <th className="text-center px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Volume (liter)</th>
-                    <th className="text-center px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Revenue</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                  {/* January Row */}
-                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                    <td className="px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">Januari</td>
-                    <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">24.5</td>
-                    <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">450</td>
-                    <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">Rp 13.200.000</td>
-                  </tr>
-                  {/* February Row */}
-                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                    <td className="px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">Februari</td>
-                    <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">28.5</td>
-                    <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">520</td>
-                    <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">Rp 15.200.000</td>
-                  </tr>
-                  {/* Change Row */}
-                  <tr className="bg-gray-50 dark:bg-gray-900">
-                    <td className="px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">Perubahan</td>
-                    <td className="px-4 py-4 text-center">
-                      <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                        </svg>
-                        +4.0
-                      </span>
-                    </td>
-                    <td className="px-4 py-4 text-center">
-                      <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                        </svg>
-                        +70
-                      </span>
-                    </td>
-                    <td className="px-4 py-4 text-center">
-                      <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                        </svg>
-                        +2.000.000
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              {/* Desktop Table */}
+              <div className="hidden sm:block">
+                <table className="w-full">
+                  <thead className="bg-gray-50 dark:bg-gray-900">
+                    <tr>
+                      <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Bulan</th>
+                      <th className="text-center px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Margin (%)</th>
+                      <th className="text-center px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Volume (liter)</th>
+                      <th className="text-center px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Revenue</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                    {/* January Row */}
+                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                      <td className="px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">Januari</td>
+                      <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">24.5</td>
+                      <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">450</td>
+                      <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">Rp 13.200.000</td>
+                    </tr>
+                    {/* February Row */}
+                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                      <td className="px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">Februari</td>
+                      <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">28.5</td>
+                      <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">520</td>
+                      <td className="px-4 py-4 text-center text-sm text-gray-900 dark:text-white">Rp 15.200.000</td>
+                    </tr>
+                    {/* Change Row */}
+                    <tr className="bg-gray-50 dark:bg-gray-900">
+                      <td className="px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">Perubahan</td>
+                      <td className="px-4 py-4 text-center">
+                        <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                          </svg>
+                          +4.0
+                        </span>
+                      </td>
+                      <td className="px-4 py-4 text-center">
+                        <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                          </svg>
+                          +70
+                        </span>
+                      </td>
+                      <td className="px-4 py-4 text-center">
+                        <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 whitespace-nowrap">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                          </svg>
+                          +2.000.000
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              {/* Mobile Cards */}
+              <div className="sm:hidden p-4 space-y-4">
+                {/* January */}
+                <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Januari</h4>
+                  <div className="grid grid-cols-3 gap-3 text-sm">
+                    <div className="text-center">
+                      <div className="text-gray-500 dark:text-gray-400 text-xs">Margin</div>
+                      <div className="font-medium">24.5%</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-gray-500 dark:text-gray-400 text-xs">Volume</div>
+                      <div className="font-medium">450L</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-gray-500 dark:text-gray-400 text-xs">Revenue</div>
+                      <div className="font-medium text-xs">Rp 13.2jt</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* February */}
+                <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Februari</h4>
+                  <div className="grid grid-cols-3 gap-3 text-sm">
+                    <div className="text-center">
+                      <div className="text-gray-500 dark:text-gray-400 text-xs">Margin</div>
+                      <div className="font-medium">28.5%</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-gray-500 dark:text-gray-400 text-xs">Volume</div>
+                      <div className="font-medium">520L</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-gray-500 dark:text-gray-400 text-xs">Revenue</div>
+                      <div className="font-medium text-xs">Rp 15.2jt</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Changes */}
+                <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
+                  <h4 className="font-semibold text-green-800 dark:text-green-200 mb-3">Perubahan</h4>
+                  <div className="grid grid-cols-3 gap-3 text-sm">
+                    <div className="text-center">
+                      <div className="text-green-600 dark:text-green-400 text-xs">Margin</div>
+                      <div className="font-medium text-green-600 dark:text-green-400">+4.0%</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-green-600 dark:text-green-400 text-xs">Volume</div>
+                      <div className="font-medium text-green-600 dark:text-green-400">+70L</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-green-600 dark:text-green-400 text-xs">Revenue</div>
+                      <div className="font-medium text-green-600 dark:text-green-400 text-xs">+2jt</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             
             <div className="flex items-start gap-3 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
@@ -387,61 +450,57 @@ const AIShowcase = () => {
               <div className="space-y-4">
                 {response.materials.filter(m => m.name !== 'Total').map((material, index) => (
                   <div key={index} className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                      {/* Material Info - 3 columns */}
-                      <div className="md:col-span-3">
+                    {/* Mobile-First Layout */}
+                    <div className="space-y-4">
+                      {/* Material Info */}
+                      <div>
                         <p className="text-sm font-semibold text-gray-900 dark:text-white">{material.name}</p>
                         <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">{material.code}</p>
-                        <div className="space-y-1 text-xs text-gray-600 dark:text-gray-400 mb-3">
+                        <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 dark:text-gray-400 mb-3">
                           <div><span className="font-medium">Daya Sebar:</span> {material.coverage}</div>
                           <div><span className="font-medium">Area:</span> {material.area}</div>
                         </div>
-                        
-                        {/* Available Package Sizes */}
-                        <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
-                          <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Ukuran Kemasan Tersedia:</p>
-                          <div className="space-y-1">
-                            {response.packagingSizes.map((size, sizeIndex) => (
-                              <div key={sizeIndex} className="text-xs text-gray-600 dark:text-gray-400">
-                                • {size}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
                       </div>
                       
-                      {/* Calculation - 9 columns (fills remaining width) */}
-                      <div className="md:col-span-9">
-                        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg h-full">
+                      {/* Calculation */}
+                      <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                        {/* Calculation Details */}
+                        <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">Kalkulasi:</p>
+                        <p className="text-xs text-blue-600 dark:text-blue-400 mb-3 break-words">{material.calculation}</p>
+                        
+                        <div className="grid grid-cols-2 gap-4 mb-3">
                           <div>
-                            {/* Calculation Details */}
-                            <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">Kalkulasi:</p>
-                            <p className="text-xs text-blue-600 dark:text-blue-400 mb-2">{material.calculation}</p>
-                            <div className="pt-2 border-t border-blue-200 dark:border-blue-800 grid grid-cols-2 gap-4 mb-3">
-                              <div>
-                                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Kebutuhan:</p>
-                                <p className="text-base font-bold text-gray-900 dark:text-white">{material.amount}</p>
-                              </div>
-                              <div>
-                                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">+ 10% Loss Factor:</p>
-                                <p className="text-base font-bold text-green-600 dark:text-green-400">{material.withLoss}</p>
-                              </div>
-                            </div>
-                            
-                            {/* Packaging Required - Below calculation */}
-                            {material.packaging && (
-                              <div className="pt-3 border-t border-blue-200 dark:border-blue-800">
-                                <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2">Packaging yang dibutuhkan:</p>
-                                <div className="flex gap-2">
-                                  {material.packaging.map((pkg, pkgIndex) => (
-                                    <div key={pkgIndex} className="inline-flex items-center text-xs bg-white dark:bg-blue-900/30 px-2 py-1 rounded border border-blue-200 dark:border-blue-800">
-                                      <span className="font-medium">{pkg.qty}× {pkg.size} {pkg.unit}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Kebutuhan:</p>
+                            <p className="text-sm font-bold text-gray-900 dark:text-white">{material.amount}</p>
                           </div>
+                          <div>
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">+ 10% Loss Factor:</p>
+                            <p className="text-sm font-bold text-green-600 dark:text-green-400">{material.withLoss}</p>
+                          </div>
+                        </div>
+                        
+                        {/* Packaging Required */}
+                        {material.packaging && (
+                          <div className="pt-3 border-t border-blue-200 dark:border-blue-800">
+                            <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2">Packaging yang dibutuhkan:</p>
+                            <div className="flex flex-wrap gap-2">
+                              {material.packaging.map((pkg, pkgIndex) => (
+                                <div key={pkgIndex} className="inline-flex items-center text-xs bg-white dark:bg-blue-900/30 px-2 py-1 rounded border border-blue-200 dark:border-blue-800">
+                                  <span className="font-medium">{pkg.qty}× {pkg.size} {pkg.unit}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Available Package Sizes - Bottom on mobile */}
+                      <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
+                        <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Ukuran Kemasan Tersedia:</p>
+                        <div className="grid grid-cols-3 gap-1 text-xs text-gray-600 dark:text-gray-400">
+                          {response.packagingSizes.map((size, sizeIndex) => (
+                            <div key={sizeIndex}>• {size}</div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -450,22 +509,22 @@ const AIShowcase = () => {
                 
                 {/* Total Summary */}
                 <div className="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg border-2 border-gray-300 dark:border-gray-600">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                  <div className="grid grid-cols-2 gap-4 text-center">
                     <div>
                       <p className="text-xs text-gray-600 dark:text-gray-400">Total Kebutuhan</p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">50 liter</p>
+                      <p className="text-sm sm:text-lg font-bold text-gray-900 dark:text-white">50 liter</p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-600 dark:text-gray-400">Total + Loss Factor</p>
-                      <p className="text-lg font-bold text-green-600 dark:text-green-400">56 liter</p>
+                      <p className="text-sm sm:text-lg font-bold text-green-600 dark:text-green-400">56 liter</p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-600 dark:text-gray-400">Estimasi Biaya</p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">Rp 6.800.000</p>
+                      <p className="text-sm sm:text-lg font-bold text-gray-900 dark:text-white">Rp 6.8jt</p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-600 dark:text-gray-400">Total Packaging</p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">3× 20L + 1× 1L</p>
+                      <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white">3× 20L + 1× 1L</p>
                     </div>
                   </div>
                 </div>
