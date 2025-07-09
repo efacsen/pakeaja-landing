@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakeAja - 500+ Aplikator Menunggu Solusi Ini</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #3b82f6;
+            --secondary: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Stats Background */
+        .stats-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.03;
+        }
+        
+        .floating-number {
+            position: absolute;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            animation: float-up 20s linear infinite;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .live-counter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid var(--border);
+        }
+        
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .community-avatars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-left: -15px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .avatar:first-child {
+            margin-left: 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 .highlight {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Story Section */
+        .story {
+            padding: 4rem 0;
+            background: var(--light);
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .story-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+        
+        .story-visual {
+            position: relative;
+        }
+        
+        .chat-bubbles {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .chat-bubble {
+            background: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .chat-bubble.user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Problems Section */
+        .problems {
+            padding: 4rem 0;
+        }
+        
+        .problems-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .problems-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .problem-card {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .problem-card:hover {
+            border-color: var(--danger);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .problem-quote {
+            font-style: italic;
+            color: var(--secondary);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .testimonial-info h4 {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+        
+        .testimonial-content {
+            color: var(--secondary);
+            line-height: 1.8;
+        }
+        
+        .rating {
+            color: var(--warning);
+            margin-top: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .benefit-icon {
+            font-size: 1.5rem;
+        }
+        
+        .waitlist-form {
+            max-width: 500px;
+            margin: 3rem auto 0;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .waitlist-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        /* Roadmap */
+        .roadmap {
+            padding: 4rem 0;
+        }
+        
+        .roadmap-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .milestone {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .milestone-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .milestone-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+        
+        .milestone-date {
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .milestone-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .milestone.completed .milestone-icon {
+            background: var(--success);
+        }
+        
+        .milestone-line {
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: -30px;
+            width: 2px;
+            background: var(--border);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .story-grid { grid-template-columns: 1fr; }
+            .form-group { flex-direction: column; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .waitlist-info { flex-direction: column; gap: 1rem; }
+        }
+        
+        /* Success Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 400px;
+            animation: scaleIn 0.3s ease;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="stats-bg">
+        <div class="floating-number" style="left: 10%; animation-delay: 0s;">523</div>
+        <div class="floating-number" style="left: 30%; animation-delay: 5s;">87%</div>
+        <div class="floating-number" style="left: 50%; animation-delay: 10s;">1000+</div>
+        <div class="floating-number" style="left: 70%; animation-delay: 15s;">24/7</div>
+        <div class="floating-number" style="left: 90%; animation-delay: 20s;">99%</div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">P</div>
+                    <span>PakeAja</span>
+                </div>
+                <div class="live-counter">
+                    <div class="live-dot"></div>
+                    <span><strong id="liveCount">523</strong> aplikator waiting</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="community-avatars">
+                <div class="avatar">A</div>
+                <div class="avatar">B</div>
+                <div class="avatar">S</div>
+                <div class="avatar">R</div>
+                <div class="avatar">+519</div>
+            </div>
+            
+            <h1>
+                <span class="highlight">500+ Aplikator</span><br>
+                Menunggu Solusi Ini
+            </h1>
+            
+            <p class="hero-subtitle">
+                Bergabunglah dengan komunitas aplikator cat yang siap mengubah industri
+            </p>
+            
+            <a href="#join" class="btn-primary" style="display: inline-block;">
+                Saya Mau Ikutan!
+            </a>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <h2>Cerita Dimulai dari Keluhan yang Sama</h2>
+                    <p style="font-size: 1.125rem; color: var(--secondary); line-height: 1.8;">
+                        Kami ngobrol dengan ratusan aplikator cat di seluruh Indonesia. 
+                        Dari Sabang sampai Merauke, masalahnya sama: 
+                        <strong>sistem kerja yang masih manual bikin repot dan kehilangan cuan.</strong>
+                    </p>
+                    
+                    <div class="story-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">87%</span>
+                            <span class="stat-label">Kesulitan tracking project</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">65%</span>
+                            <span class="stat-label">Client telat bayar</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">92%</span>
+                            <span class="stat-label">Butuh digitalisasi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-visual">
+                    <div class="chat-bubbles">
+                        <div class="chat-bubble">
+                            "Pak, ada aplikasi buat manage proyek cat gak ya? 
+                            Saya cape nulis di buku terus ilang"
+                        </div>
+                        <div class="chat-bubble user">
+                            "Sama pak, saya juga butuh. Client sering lupa bayar DP"
+                        </div>
+                        <div class="chat-bubble">
+                            "Kalo ada yang bikin, saya mau banget pak!"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="container">
+            <div class="problems-header">
+                <h2>Masalah yang Akan Kami Selesaikan</h2>
+                <p style="color: var(--secondary);">Berdasarkan feedback dari komunitas aplikator</p>
+            </div>
+            
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <div class="problem-icon">📱</div>
+                    <h3 class="problem-title">WhatsApp Chaos</h3>
+                    <p>Info proyek campur aduk dengan chat keluarga, foto progress ilang, ukuran ruangan lupa dimana.</p>
+                    <p class="problem-quote">"Scroll sampe pegel nyari chat client 2 minggu lalu" - Budi, Aplikator Jakarta</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">💰</div>
+                    <h3 class="problem-title">Cash Flow Nightmare</h3>
+                    <p>Client PHP (Pemberi Harapan Palsu), janji bayar besok tapi besoknya ilang. Modal kepake duluan.</p>
+                    <p class="problem-quote">"Saya rugi 15 juta gara-gara client kabur" - Ahmad, Aplikator Surabaya</p>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-icon">📊</div>
+                    <h3 class="problem-title">Zero Business Analytics</h3>
+                    <p>Gak tau untung berapa, proyek mana yang profitable, semua cuma based on feeling.</p>
+                    <p class="problem-quote">"Pengen tau statistik bisnis tapi gak ngerti caranya" - Siti, Aplikator Bandung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="problems-header">
+                <h2>Kata Mereka yang Sudah Nungguin</h2>
+                <p style="color: var(--secondary);">Real feedback dari calon user PakeAja</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">RS</div>
+                        <div class="testimonial-info">
+                            <h4>Rizky Saputra</h4>
+                            <p>Aplikator Premium, Jakarta</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-content">
+                        "Udah lama banget nunggu aplikasi kayak gini. 
+                        Selama ini manage 10+ proyek cuma pake Excel doang, ribet banget. 
+                        Can't wait to try PakeAja!"
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">AS</div>
+                        <div class="testimonial-info">
+                            <h4>Andi Setiawan</h4>
+                            <p>Owner CV. Warna Indah</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-content">
+                        "Tim saya 15 orang, koordinasi susah banget. 
+                        Kalo ada app yang bisa tracking progress real-time, 
+                        pasti produktivitas naik 2x lipat!"
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">MW</div>
+                        <div class="testimonial-info">
+                            <h4>Maya Wulandari</h4>
+                            <p>Interior Designer</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-content">
+                        "Sering kerja sama aplikator buat project interior. 
+                        Komunikasi jadi kendala utama. PakeAja solusi yang perfect!"
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="join">
+        <div class="container">
+            <h2>Jadi Bagian dari Revolusi Industri Cat</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem;">
+                Early bird mendapat benefit eksklusif
+            </p>
+            
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <span class="benefit-icon">✅</span>
+                    <span>Gratis Selamanya</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🎯</span>
+                    <span>Priority Support</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">🚀</span>
+                    <span>Early Access</span>
+                </div>
+                <div class="benefit">
+                    <span class="benefit-icon">💎</span>
+                    <span>Exclusive Features</span>
+                </div>
+            </div>
+            
+            <div class="waitlist-form">
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            class="input" 
+                            placeholder="email@anda.com"
+                            required
+                        >
+                        <button type="submit" class="btn-primary">
+                            Join VIP List
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="waitlist-info">
+                    <div>
+                        <strong>🔥 73</strong> daftar hari ini
+                    </div>
+                    <div>
+                        <strong>⏰ 27</strong> slot VIP tersisa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="roadmap">
+        <div class="container">
+            <div class="problems-header">
+                <h2>Roadmap to Launch</h2>
+                <p style="color: var(--secondary);">Transparent development timeline</p>
+            </div>
+            
+            <div class="roadmap-container">
+                <div class="milestone completed">
+                    <div class="milestone-icon">✓</div>
+                    <div class="milestone-content">
+                        <div class="milestone-date">Oktober 2023</div>
+                        <h4 class="milestone-title">Research & Validation</h4>
+                        <p>Interview dengan 100+ aplikator di 15 kota</p>
+                    </div>
+                    <div class="milestone-line"></div>
+                </div>
+                
+                <div class="milestone completed">
+                    <div class="milestone-icon">✓</div>
+                    <div class="milestone-content">
+                        <div class="milestone-date">November 2023</div>
+                        <h4 class="milestone-title">Product Design</h4>
+                        <p>UI/UX design based on user feedback</p>
+                    </div>
+                    <div class="milestone-line"></div>
+                </div>
+                
+                <div class="milestone">
+                    <div class="milestone-icon">⚡</div>
+                    <div class="milestone-content">
+                        <div class="milestone-date">Januari 2024</div>
+                        <h4 class="milestone-title">Beta Testing</h4>
+                        <p>Closed beta dengan 50 aplikator terpilih</p>
+                    </div>
+                    <div class="milestone-line"></div>
+                </div>
+                
+                <div class="milestone">
+                    <div class="milestone-icon">🚀</div>
+                    <div class="milestone-content">
+                        <div class="milestone-date">Maret 2024</div>
+                        <h4 class="milestone-title">Public Launch</h4>
+                        <p>Grand launching untuk semua aplikator Indonesia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PakeAja. Built with ❤️ for Indonesian painters.</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">🎉</div>
+            <h3>Welcome to VIP List!</h3>
+            <p style="margin: 1rem 0;">Kamu aplikator ke-<strong id="userPosition">524</strong> yang join waitlist!</p>
+            <p style="color: var(--secondary);">Check email untuk konfirmasi dan bonus exclusive content.</p>
+            <button class="btn-primary" onclick="closeModal()" style="margin-top: 2rem;">
+                OK, Mantap!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Live counter animation
+        let count = 523;
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                count++;
+                document.getElementById('liveCount').textContent = count;
+            }
+        }, 5000);
+        
+        // Form submission
+        document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            count++;
+            document.getElementById('userPosition').textContent = count;
+            document.getElementById('successModal').classList.add('active');
+            e.target.reset();
+        });
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add random floating numbers
+        setInterval(() => {
+            const numbers = ['24/7', '99%', '1000+', '87%', '500+'];
+            const randomNum = numbers[Math.floor(Math.random() * numbers.length)];
+            const floater = document.createElement('div');
+            floater.className = 'floating-number';
+            floater.textContent = randomNum;
+            floater.style.left = Math.random() * 100 + '%';
+            floater.style.animationDuration = (15 + Math.random() * 10) + 's';
+            document.querySelector('.stats-bg').appendChild(floater);
+            
+            setTimeout(() => floater.remove(), 25000);
+        }, 3000);
+    </script>
+</body>
+</html>

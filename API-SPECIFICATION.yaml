@@ -1,0 +1,990 @@
+openapi: 3.0.3
+info:
+  title: Pake Aja Platform API
+  description: |
+    API untuk platform pembelajaran CSS interaktif www.pakeaja.com
+    
+    ## Autentikasi
+    API menggunakan JWT tokens untuk autentikasi. Token dapat diperoleh melalui endpoint login.
+    
+    ## Rate Limiting
+    - Anonymous: 100 requests/menit
+    - Authenticated: 1000 requests/menit
+    - Premium: 2000 requests/menit
+    
+    ## Versioning
+    API menggunakan versioning melalui path (v1, v2, dst)
+    
+    ## Error Messages
+    Semua error messages tersedia dalam Bahasa Indonesia dan English
+  version: 1.0.0
+  contact:
+    name: Pake Aja Support
+    email: support@pakeaja.com
+  license:
+    name: Proprietary
+    
+servers:
+  - url: https://api.pakeaja.com/v1
+    description: Production server
+  - url: https://staging-api.pakeaja.com/v1
+    description: Staging server
+  - url: http://localhost:3000/api/v1
+    description: Development server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+  schemas:
+    Error:
+      type: object
+      required:
+        - code
+        - message
+        - timestamp
+      properties:
+        code:
+          type: string
+          example: "AUTH_001"
+        message:
+          type: string
+          example: "Token tidak valid atau sudah kadaluarsa"
+        message_en:
+          type: string
+          example: "Invalid or expired token"
+        details:
+          type: object
+        timestamp:
+          type: string
+          format: date-time
+          
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        role:
+          type: string
+          enum: [free, premium, admin]
+        language:
+          type: string
+          enum: [id, en]
+          default: id
+        emailVerified:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+          
+    Subscription:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [active, expired, cancelled]
+        expiresAt:
+          type: string
+          format: date-time
+        plan:
+          type: string
+          enum: [free, premium_monthly, premium_yearly]
+          
+    Tutorial:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        slug:
+          type: string
+        title:
+          type: string
+        title_en:
+          type: string
+        description:
+          type: string
+        description_en:
+          type: string
+        content:
+          type: string
+          description: Markdown content
+        isPremium:
+          type: boolean
+        difficulty:
+          type: string
+          enum: [pemula, menengah, mahir]
+        estimatedMinutes:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+          
+    CodeExample:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        title_en:
+          type: string
+        description:
+          type: string
+        htmlCode:
+          type: string
+        cssCode:
+          type: string
+        jsCode:
+          type: string
+          nullable: true
+        isPremium:
+          type: boolean
+        category:
+          type: string
+        difficulty:
+          type: string
+          enum: [pemula, menengah, mahir]
+        likes:
+          type: integer
+        views:
+          type: integer
+          
+    NewsletterSubscriber:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        language:
+          type: string
+          enum: [id, en]
+        subscribedAt:
+          type: string
+          format: date-time
+        leadMagnetSent:
+          type: boolean
+        tags:
+          type: array
+          items:
+            type: string
+            
+    Testimonial:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          type: string
+        company:
+          type: string
+        content:
+          type: string
+        content_en:
+          type: string
+        avatarUrl:
+          type: string
+        isActive:
+          type: boolean
+        order:
+          type: integer
+
+paths:
+  # Authentication Endpoints
+  /auth/register:
+    post:
+      tags:
+        - Authentication
+      summary: Register new user
+      description: Mendaftar pengguna baru dengan email dan password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - name
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 8
+                name:
+                  type: string
+                language:
+                  type: string
+                  enum: [id, en]
+                  default: id
+            example:
+              email: "budi@example.com"
+              password: "rahasia123"
+              name: "Budi Santoso"
+              language: "id"
+      responses:
+        '201':
+          description: Registrasi berhasil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+              example:
+                message: "Registrasi berhasil! Silakan cek email untuk verifikasi."
+                user:
+                  id: "123e4567-e89b-12d3-a456-426614174000"
+                  email: "budi@example.com"
+                  name: "Budi Santoso"
+                  role: "free"
+                  emailVerified: false
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Email already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login user
+      description: Login dengan email dan password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+            example:
+              email: "budi@example.com"
+              password: "rahasia123"
+      responses:
+        '200':
+          description: Login berhasil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
+                  expiresIn:
+                    type: integer
+                  user:
+                    $ref: '#/components/schemas/User'
+              example:
+                accessToken: "eyJhbGciOiJIUzI1NiIs..."
+                refreshToken: "eyJhbGciOiJIUzI1NiIs..."
+                expiresIn: 3600
+                user:
+                  id: "123e4567-e89b-12d3-a456-426614174000"
+                  email: "budi@example.com"
+                  name: "Budi Santoso"
+                  role: "premium"
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  /auth/refresh:
+    post:
+      tags:
+        - Authentication
+      summary: Refresh access token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - refreshToken
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: Token refreshed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                  expiresIn:
+                    type: integer
+                    
+  /auth/verify-email:
+    post:
+      tags:
+        - Authentication
+      summary: Verify email address
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Email verified
+          
+  /auth/forgot-password:
+    post:
+      tags:
+        - Authentication
+      summary: Request password reset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: Reset email sent
+          
+  # User Management
+  /users/me:
+    get:
+      tags:
+        - Users
+      summary: Get current user profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+                
+    patch:
+      tags:
+        - Users
+      summary: Update user profile
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                language:
+                  type: string
+                  enum: [id, en]
+            example:
+              name: "Budi Santoso Updated"
+              language: "en"
+      responses:
+        '200':
+          description: Profile updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+                
+  # Tutorials
+  /tutorials:
+    get:
+      tags:
+        - Tutorials
+      summary: List tutorials
+      parameters:
+        - in: query
+          name: difficulty
+          schema:
+            type: string
+            enum: [pemula, menengah, mahir]
+        - in: query
+          name: tag
+          schema:
+            type: string
+        - in: query
+          name: premium
+          schema:
+            type: boolean
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+      responses:
+        '200':
+          description: List of tutorials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tutorial'
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                      limit:
+                        type: integer
+                      total:
+                        type: integer
+                      totalPages:
+                        type: integer
+                        
+  /tutorials/{slug}:
+    get:
+      tags:
+        - Tutorials
+      summary: Get tutorial by slug
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tutorial details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tutorial'
+        '403':
+          description: Premium content requires subscription
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+  # Code Examples
+  /code-examples:
+    get:
+      tags:
+        - Code Examples
+      summary: List code examples
+      parameters:
+        - in: query
+          name: category
+          schema:
+            type: string
+        - in: query
+          name: difficulty
+          schema:
+            type: string
+            enum: [pemula, menengah, mahir]
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 12
+      responses:
+        '200':
+          description: List of code examples
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CodeExample'
+                  pagination:
+                    type: object
+                    
+    post:
+      tags:
+        - Code Examples
+      summary: Save code example (requires auth)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - htmlCode
+                - cssCode
+              properties:
+                title:
+                  type: string
+                htmlCode:
+                  type: string
+                cssCode:
+                  type: string
+                jsCode:
+                  type: string
+                  nullable: true
+      responses:
+        '201':
+          description: Code example saved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeExample'
+                
+  /code-examples/{id}:
+    get:
+      tags:
+        - Code Examples
+      summary: Get code example by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Code example details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeExample'
+                
+  /code-examples/{id}/like:
+    post:
+      tags:
+        - Code Examples
+      summary: Like a code example
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Like recorded
+          
+  # Newsletter
+  /newsletter/subscribe:
+    post:
+      tags:
+        - Newsletter
+      summary: Subscribe to newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  format: email
+                language:
+                  type: string
+                  enum: [id, en]
+                  default: id
+                source:
+                  type: string
+            example:
+              email: "budi@example.com"
+              language: "id"
+              source: "landing-hero"
+      responses:
+        '201':
+          description: Subscribed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  leadMagnetUrl:
+                    type: string
+              example:
+                message: "Terima kasih! Cek email Anda untuk mendapatkan 50 CSS Tricks."
+                leadMagnetUrl: "https://cdn.pakeaja.com/lead-magnets/50-css-tricks.pdf"
+                
+  /newsletter/unsubscribe:
+    post:
+      tags:
+        - Newsletter
+      summary: Unsubscribe from newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Unsubscribed successfully
+          
+  # Testimonials
+  /testimonials:
+    get:
+      tags:
+        - Testimonials
+      summary: Get active testimonials
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: List of testimonials
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Testimonial'
+                  
+  # Payment & Subscription
+  /subscription/upgrade:
+    post:
+      tags:
+        - Subscription
+      summary: Upgrade to premium
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - plan
+              properties:
+                plan:
+                  type: string
+                  enum: [premium_monthly, premium_yearly]
+                paymentMethod:
+                  type: string
+                  enum: [credit_card, e_wallet, virtual_account]
+            example:
+              plan: "premium_monthly"
+              paymentMethod: "e_wallet"
+      responses:
+        '200':
+          description: Payment URL created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  paymentUrl:
+                    type: string
+                  invoiceId:
+                    type: string
+                  expiresAt:
+                    type: string
+                    format: date-time
+              example:
+                paymentUrl: "https://checkout.xendit.co/web/..."
+                invoiceId: "INV-123456"
+                expiresAt: "2025-07-08T10:00:00Z"
+                
+  /subscription/status:
+    get:
+      tags:
+        - Subscription
+      summary: Check subscription status
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Subscription status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+                
+  # Webhooks
+  /webhooks/xendit:
+    post:
+      tags:
+        - Webhooks
+      summary: Xendit payment webhook
+      description: |
+        Webhook endpoint for Xendit payment notifications.
+        Must be configured in Xendit dashboard.
+      parameters:
+        - in: header
+          name: X-CALLBACK-TOKEN
+          required: true
+          schema:
+            type: string
+          description: Xendit webhook verification token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                external_id:
+                  type: string
+                user_id:
+                  type: string
+                is_high:
+                  type: boolean
+                payment_method:
+                  type: string
+                status:
+                  type: string
+                  enum: [PAID, EXPIRED, FAILED]
+                merchant_name:
+                  type: string
+                amount:
+                  type: number
+                paid_amount:
+                  type: number
+                bank_code:
+                  type: string
+                paid_at:
+                  type: string
+                  format: date-time
+                payer_email:
+                  type: string
+                description:
+                  type: string
+                currency:
+                  type: string
+                payment_channel:
+                  type: string
+                payment_destination:
+                  type: string
+      responses:
+        '200':
+          description: Webhook processed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  received:
+                    type: boolean
+                    
+  # Admin Endpoints
+  /admin/users:
+    get:
+      tags:
+        - Admin
+      summary: List all users (admin only)
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: role
+          schema:
+            type: string
+            enum: [free, premium]
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: User list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  pagination:
+                    type: object
+        '403':
+          description: Admin access required
+          
+  /admin/analytics/summary:
+    get:
+      tags:
+        - Admin
+      summary: Get analytics summary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Analytics data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      free:
+                        type: integer
+                      premium:
+                        type: integer
+                      newThisMonth:
+                        type: integer
+                  revenue:
+                    type: object
+                    properties:
+                      thisMonth:
+                        type: number
+                      lastMonth:
+                        type: number
+                      total:
+                        type: number
+                  engagement:
+                    type: object
+                    properties:
+                      tutorialsViewed:
+                        type: integer
+                      codeExamplesSaved:
+                        type: integer
+                      averageSessionMinutes:
+                        type: number
+
+# Error Codes Documentation
+x-error-codes:
+  AUTH_001:
+    message: "Token tidak valid atau sudah kadaluarsa"
+    message_en: "Invalid or expired token"
+  AUTH_002:
+    message: "Email atau password salah"
+    message_en: "Invalid email or password"
+  AUTH_003:
+    message: "Email belum diverifikasi"
+    message_en: "Email not verified"
+  AUTH_004:
+    message: "Akses ditolak"
+    message_en: "Access denied"
+  USER_001:
+    message: "Pengguna tidak ditemukan"
+    message_en: "User not found"
+  USER_002:
+    message: "Email sudah terdaftar"
+    message_en: "Email already registered"
+  SUBS_001:
+    message: "Konten premium memerlukan langganan"
+    message_en: "Premium content requires subscription"
+  SUBS_002:
+    message: "Langganan sudah kadaluarsa"
+    message_en: "Subscription expired"
+  PAY_001:
+    message: "Pembayaran gagal"
+    message_en: "Payment failed"
+  PAY_002:
+    message: "Invoice sudah kadaluarsa"
+    message_en: "Invoice expired"
+  RATE_001:
+    message: "Terlalu banyak permintaan. Coba lagi nanti"
+    message_en: "Too many requests. Try again later"
+  VAL_001:
+    message: "Data tidak valid"
+    message_en: "Invalid data"
+  SYS_001:
+    message: "Terjadi kesalahan sistem"
+    message_en: "System error occurred"

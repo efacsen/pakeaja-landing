@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakeAja - Coming Soon | Aplikasi Manajemen Proyek Cat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #3b82f6;
+            --secondary: #64748b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .coming-soon {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+        }
+        
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        
+        .countdown-item {
+            text-align: center;
+        }
+        
+        .countdown-number {
+            display: block;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .countdown-label {
+            font-size: 0.875rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin: 3rem 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 75%;
+            transition: width 1s ease;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100px); }
+        }
+        
+        /* Problems Section */
+        .problems {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary);
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .problem-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .problem-desc {
+            color: var(--secondary);
+        }
+        
+        /* Waitlist Form */
+        .waitlist {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .waitlist-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .waitlist-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .waitlist-desc {
+            color: var(--secondary);
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .waitlist-count {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+        
+        .count-number {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: white;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.25rem; }
+            .countdown { gap: 1rem; }
+            .countdown-number { font-size: 2rem; }
+            .form-group { flex-direction: column; }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .slide-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">P</div>
+                    <span>PakeAja</span>
+                </div>
+                <div class="badge">Coming Soon</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="coming-soon">🚀 Launching Q1 2024</div>
+                <h1>Aplikasi Manajemen Proyek Cat<br>Pertama di Indonesia</h1>
+                <p class="subtitle">
+                    Atur proyek, invoice otomatis, client bayar tepat waktu
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">60</span>
+                        <span class="countdown-label">Hari</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">12</span>
+                        <span class="countdown-label">Jam</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">34</span>
+                        <span class="countdown-label">Menit</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">56</span>
+                        <span class="countdown-label">Detik</span>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Development Progress</span>
+                        <span>75% Complete</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2 class="section-title">Ini yang Akan Kami Selesaikan</h2>
+                <p class="section-subtitle">3 masalah utama aplikator cat di Indonesia</p>
+            </div>
+            
+            <div class="problems-grid">
+                <div class="problem-card slide-up" style="animation-delay: 0.1s">
+                    <div class="problem-icon">💬</div>
+                    <h3 class="problem-title">Chat Proyek Berantakan</h3>
+                    <p class="problem-desc">
+                        Info proyek ilang di WhatsApp, susah tracking progress
+                    </p>
+                </div>
+                
+                <div class="problem-card slide-up" style="animation-delay: 0.2s">
+                    <div class="problem-icon">💸</div>
+                    <h3 class="problem-title">Pembayaran Ngaret</h3>
+                    <p class="problem-desc">
+                        Client lupa bayar, gak ada sistem reminder otomatis
+                    </p>
+                </div>
+                
+                <div class="problem-card slide-up" style="animation-delay: 0.3s">
+                    <div class="problem-icon">📝</div>
+                    <h3 class="problem-title">Invoice Manual</h3>
+                    <p class="problem-desc">
+                        Bikin penawaran di kertas, keliatan gak profesional
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Waitlist Form -->
+            <div class="waitlist slide-up">
+                <div class="waitlist-header">
+                    <h3 class="waitlist-title">Jadi yang Pertama Cobain!</h3>
+                    <p class="waitlist-desc">
+                        Daftar sekarang, dapat akses gratis selamanya untuk 100 pendaftar pertama
+                    </p>
+                </div>
+                
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            class="input" 
+                            placeholder="nama@email.com"
+                            required
+                        >
+                        <button type="submit" class="btn-primary">
+                            Notify Me
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="successMessage" class="success-message">
+                    ✅ Mantap! Kamu di posisi #<span id="position">87</span> dalam waitlist!
+                </div>
+                
+                <div class="waitlist-count">
+                    <span class="count-number">523</span> aplikator sudah daftar waitlist
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PakeAja. Coming Soon.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        const launchDate = new Date('2024-03-01').getTime();
+        
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }, 1000);
+        
+        // Form Submission
+        document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Simulate form submission
+            const btn = e.target.querySelector('button');
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+            
+            setTimeout(() => {
+                const position = Math.floor(Math.random() * 50) + 80;
+                document.getElementById('position').textContent = position;
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('email').value = '';
+                btn.disabled = false;
+                btn.textContent = 'Notify Me';
+                
+                // Update count
+                const countEl = document.querySelector('.count-number');
+                const currentCount = parseInt(countEl.textContent);
+                countEl.textContent = currentCount + 1;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakeAja Coming Soon - Mockup Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #0f172a;
+        }
+        
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .mockup-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .mockup-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mockup-preview {
+            width: 100%;
+            height: 300px;
+            border: none;
+            pointer-events: none;
+        }
+        
+        .mockup-info {
+            padding: 1.5rem;
+        }
+        
+        .mockup-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        
+        .mockup-desc {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .features li {
+            padding: 0.25rem 0;
+            color: #475569;
+            font-size: 0.875rem;
+        }
+        
+        .features li:before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .btn-view {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        .recommendation {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .recommendation h3 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .recommendation p {
+            color: #78350f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 PakeAja Coming Soon Page - Choose Your Design</h1>
+        
+        <div class="mockup-grid">
+            <!-- Mockup 1 -->
+            <div class="mockup-card">
+                <iframe src="coming-soon-1.html" class="mockup-preview"></iframe>
+                <div class="mockup-info">
+                    <h2 class="mockup-title">Option 1: Minimalist Coming Soon</h2>
+                    <p class="mockup-desc">
+                        Clean and professional design with countdown timer and development progress bar.
+                    </p>
+                    <ul class="features">
+                        <li>Countdown timer to launch date</li>
+                        <li>Development progress indicator</li>
+                        <li>Simple problem cards</li>
+                        <li>Clean waitlist form</li>
+                        <li>Minimalist aesthetic</li>
+                    </ul>
+                    <a href="coming-soon-1.html" target="_blank" class="btn-view">View Full Page</a>
+                </div>
+            </div>
+            
+            <!-- Mockup 2 -->
+            <div class="mockup-card">
+                <iframe src="coming-soon-2.html" class="mockup-preview"></iframe>
+                <div class="mockup-info">
+                    <h2 class="mockup-title">Option 2: App Preview Teaser</h2>
+                    <p class="mockup-desc">
+                        Dark theme with interactive app mockup and feature previews. More technical feel.
+                    </p>
+                    <ul class="features">
+                        <li>Interactive phone mockup</li>
+                        <li>Feature tabs showcase</li>
+                        <li>Development timeline</li>
+                        <li>Dark/tech aesthetic</li>
+                        <li>Priority access messaging</li>
+                    </ul>
+                    <a href="coming-soon-2.html" target="_blank" class="btn-view">View Full Page</a>
+                </div>
+            </div>
+            
+            <!-- Mockup 3 -->
+            <div class="mockup-card">
+                <iframe src="coming-soon-3.html" class="mockup-preview"></iframe>
+                <div class="mockup-info">
+                    <h2 class="mockup-title">Option 3: Story-Driven Community</h2>
+                    <p class="mockup-desc">
+                        Community-focused design with social proof, testimonials, and live counter.
+                    </p>
+                    <ul class="features">
+                        <li>Live waitlist counter</li>
+                        <li>Community avatars</li>
+                        <li>Real testimonials</li>
+                        <li>Story-based approach</li>
+                        <li>VIP benefits highlight</li>
+                    </ul>
+                    <a href="coming-soon-3.html" target="_blank" class="btn-view">View Full Page</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recommendation">
+            <h3>💡 Recommendation</h3>
+            <p>
+                For PakeAja's target audience (Indonesian paint contractors), we recommend <strong>Option 3: Story-Driven Community</strong>. 
+                It emphasizes social proof and community, which resonates well with the local market's trust-based decision making.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
