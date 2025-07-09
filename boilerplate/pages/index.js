@@ -60,28 +60,29 @@ export default function ComingSoonCombinedPage() {
         </div>
 
         {/* Header */}
-        <header className="sticky top-0 z-50 glass" style={{ borderRadius: '0 0 1rem 1rem' }}>
-          <div className="container mx-auto px-6 md:px-8 py-6">
+        <header className="sticky top-0 z-50 glass" style={{ borderRadius: '0 0 0.5rem 0.5rem' }}>
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">P</span>
+              <div className="flex items-center space-x-2 sm:space-x-4">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent-primary rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg sm:text-xl">P</span>
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold text-primary">PakeAja</h1>
-                  <p className="text-xs text-tertiary">Coming Soon</p>
+                  <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-primary">PakeAja</h1>
+                  <p className="text-xs text-tertiary hidden sm:block">Coming Soon</p>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 sm:space-x-4">
                 <ThemeToggle />
                 <button
                   onClick={scrollToWaitlist}
-                  className="btn-primary px-5 sm:px-6 py-2.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+                  className="btn-primary px-3 sm:px-5 md:px-6 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
                 >
-                  <span className="flex items-center gap-2">
-                    <span>Join Waitlist</span>
-                    <span className="text-lg">🚀</span>
+                  <span className="flex items-center gap-1 sm:gap-2">
+                    <span className="hidden sm:inline">Join Waitlist</span>
+                    <span className="sm:hidden">Join</span>
+                    <span className="text-base sm:text-lg">🚀</span>
                   </span>
                 </button>
               </div>
@@ -95,13 +96,13 @@ export default function ComingSoonCombinedPage() {
         </div>
 
         {/* WhatsApp Chat Section */}
-        <section className="py-20 bg-secondary/30 relative z-10">
-          <div className="container mx-auto px-6 md:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+        <section className="py-12 sm:py-16 md:py-20 bg-secondary/30 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 md:px-8">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-primary">
                 Ini Percakapan Nyata di Grup WA Aplikator
               </h2>
-              <p className="text-xl text-secondary max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-secondary max-w-xl sm:max-w-2xl mx-auto px-4 sm:px-0">
                 Keluhan yang sama dari Sabang sampai Merauke. Saatnya ada solusi!
               </p>
             </div>
@@ -110,8 +111,8 @@ export default function ComingSoonCombinedPage() {
               <WhatsAppChat />
             </div>
             
-            <div className="text-center mt-8">
-              <p className="text-lg text-secondary">
+            <div className="text-center mt-6 sm:mt-8">
+              <p className="text-base sm:text-lg text-secondary px-4 sm:px-0">
                 <strong className="text-accent">Familiar dengan masalah ini?</strong> Kami punya solusinya! 👇
               </p>
             </div>
@@ -119,7 +120,7 @@ export default function ComingSoonCombinedPage() {
         </section>
 
         {/* Feature Showcase */}
-        <section className="py-20 relative z-10">
+        <section className="py-12 sm:py-16 md:py-20 relative z-10">
           <FeatureShowcase />
         </section>
 
@@ -129,34 +130,34 @@ export default function ComingSoonCombinedPage() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-tertiary border-t border-primary py-16 relative z-10">
-          <div className="container mx-auto px-6 md:px-8">
+        <footer className="bg-tertiary border-t border-primary py-8 sm:py-12 md:py-16 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center">
-              <div className="flex items-center justify-center space-x-4 mb-6">
-                <div className="w-8 h-8 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">P</span>
+              <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-accent-primary rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm sm:text-lg">P</span>
                 </div>
-                <h4 className="text-xl font-bold text-primary">PakeAja</h4>
+                <h4 className="text-lg sm:text-xl font-bold text-primary">PakeAja</h4>
               </div>
               
-              <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
                 <div className="w-2 h-2 bg-accent-primary rounded-full animate-pulse"></div>
-                <p className="text-secondary">Coming Soon 2025</p>
+                <p className="text-sm sm:text-base text-secondary">Coming Soon 2025</p>
               </div>
               
-              <p className="text-tertiary text-sm">
+              <p className="text-tertiary text-xs sm:text-sm">
                 Made with ❤️<br/>
                 Dibuat oleh Aplikator untuk Aplikator
               </p>
               
-              <div className="mt-8 pt-8 border-t border-primary">
-                <div className="flex flex-wrap justify-center gap-6 text-sm text-tertiary mb-4">
+              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-primary">
+                <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-tertiary mb-3 sm:mb-4">
                   <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
                   <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
                   <a href="#" className="hover:text-accent transition-colors">Contact</a>
                 </div>
                 
-                <p className="text-sm text-tertiary">
+                <p className="text-xs sm:text-sm text-tertiary">
                   © 2024 PakeAja. All rights reserved.
                 </p>
               </div>

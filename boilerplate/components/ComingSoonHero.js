@@ -31,24 +31,24 @@ const ComingSoonHero = ({ onJoinWaitlist }) => {
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
       
-      <div className="container mx-auto px-6 md:px-8 py-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Main Heading */}
           <div className="fade-in-up">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary leading-tight">
-              <span className="block mb-2">Pertama di Indonesia:</span>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 text-primary leading-tight">
+              <span className="block mb-1 sm:mb-2 text-lg sm:text-xl md:text-2xl lg:text-4xl">Pertama di Indonesia:</span>
               <span 
-                className={`text-accent transition-all duration-500 ${
+                className={`text-accent transition-all duration-500 block ${
                   isTyping ? 'opacity-100' : 'opacity-50'
                 }`}
-                style={{ minHeight: '1.2em', display: 'inline-block' }}
+                style={{ minHeight: '1.2em' }}
               >
                 {texts[currentText]}
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 text-secondary max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-secondary max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
               Era baru untuk Solusi lengkap yang akan mengubah cara kerja aplikator cat dan coating di Indonesia. 
               <strong className="text-accent"> Selamanya.</strong>
             </p>
