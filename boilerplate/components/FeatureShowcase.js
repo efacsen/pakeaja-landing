@@ -83,11 +83,22 @@ const FeatureShowcase = ({ className = '' }) => {
   ]
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
+
+  // --- Mobile carousel scroll handler ---
+  const handleMobileScroll = () => {
+    if (!carouselRef.current) return
+    const scrollLeft = carouselRef.current.scrollLeft
+    const cardWidth = carouselRef.current.firstChild?.offsetWidth || 1
+    const newIndex = Math.round(scrollLeft / cardWidth)
+    if (newIndex !== activeTab) setActiveTab(newIndex)
+  }
 
   // Mobile carousel scroll-to-index
   useEffect(() => {
@@ -116,6 +127,7 @@ const FeatureShowcase = ({ className = '' }) => {
               ref={carouselRef}
               className="flex flex-row overflow-x-auto snap-x snap-mandatory -mx-4 px-2 pb-4 no-scrollbar"
               style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+              onScroll={handleMobileScroll}
             >
               {features.map((feature, index) => (
                 <div
@@ -160,7 +172,14 @@ const FeatureShowcase = ({ className = '' }) => {
                 <button
                   key={idx}
                   className={`w-2 h-2 rounded-full transition-colors ${idx === activeTab ? 'bg-blue-600' : 'bg-gray-300'}`}
-                  onClick={() => setActiveTab(idx)}
+                  onClick={() => {
+                    setActiveTab(idx)
+                    // Scroll to the selected card
+                    if (carouselRef.current) {
+                      const card = carouselRef.current.children[idx]
+                      card?.scrollIntoView({ behavior: 'smooth', inline: 'center' })
+                    }
+                  }}
                   aria-label={`Go to feature ${idx + 1}`}
                 />
               ))}
