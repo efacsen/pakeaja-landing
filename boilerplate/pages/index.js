@@ -34,7 +34,7 @@ export default function ComingSoonCombinedPage() {
       <Confetti active={showConfetti} />
       
       <Head>
-        <title>PakeAja - Coming Soon | Aplikasi Manajemen Proyek Cat Pertama di Indonesia</title>
+        <title>Pake Aja Dulu - Aplikasi Aplikator Cat Pertama di Indonesia</title>
         <meta name="description" content="Aplikasi manajemen proyek cat pertama di Indonesia. Solusi lengkap untuk tracking proyek, invoice otomatis, dan AI assistant. Coming Soon Q1 2024!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -65,19 +65,18 @@ export default function ComingSoonCombinedPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg sm:text-xl">P</span>
+                  <span className="text-white font-bold text-lg sm:text-xl">P A D</span>
                 </div>
                 <div>
-                  <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-primary">PakeAja</h1>
-                  <p className="text-xs text-tertiary hidden sm:block">Coming Soon</p>
+                  <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-primary">Pake Aja Dulu</h1>
+                  <p className="text-xs text-tertiary hidden sm:block">Aplikasi Aplikator Cat Pertama di Indonesia</p>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-2 sm:space-x-4">
+              <div className="flex items-center space-x-2 sm:space-x-4 my-2">
                 <ThemeToggle />
                 <button
-                  onClick={scrollToWaitlist}
-                  className="btn-primary px-3 sm:px-5 md:px-6 py-2 sm:py-2.5 text-sm sm:text-base rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+                  className="btn-primary h-10 px-4 py-2 ml-2 text-sm sm:text-base rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 flex items-center"
                 >
                   <span className="flex items-center gap-1 sm:gap-2">
                     <span className="hidden sm:inline">Join Waitlist</span>
@@ -135,9 +134,9 @@ export default function ComingSoonCombinedPage() {
             <div className="text-center">
               <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm sm:text-lg">P</span>
+                  <span className="text-white font-bold text-sm sm:text-lg">P A D</span>
                 </div>
-                <h4 className="text-lg sm:text-xl font-bold text-primary">PakeAja</h4>
+                <h4 className="text-lg sm:text-xl font-bold text-primary">Pake Aja Dulu</h4>
               </div>
               
               <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">

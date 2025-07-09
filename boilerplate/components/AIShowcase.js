@@ -7,14 +7,18 @@ import {
 import { StatusBadge, DataCard, ProgressBar, ActionButton, LoadingSkeleton } from './AIComponents'
 
 const SUGGESTED_QUESTIONS = [
-  'Berapa kebutuhan cat untuk 100m²?',
-  'Tunjukkan laporan proyek terakhir',
-  'Cari dokumen TDS material',
+  'Berapa kebutuhan cat untuk proyek Gudang Peluru Bandung?',
+  'Berapa rata-rata margin untuk material A di bulan Februari?',
+  'Cari dokumen TDS material A',
+  'Kapan Invoice Proyek D jatuh tempo?',
+  'Berapa orang dari sales team yang telah mencapai target bulan ini?',
 ]
 const MOCK_ANSWERS = {
-  'Berapa kebutuhan cat untuk 100m²?': 'Untuk area 100m², kebutuhan cat adalah sekitar 27.900 liter (dengan asumsi daya sebar 10m²/liter dan 2 lapis).',
-  'Tunjukkan laporan proyek terakhir': 'Laporan proyek terakhir: Proyek "Renovasi Gedung A" - Status: Selesai, Total Biaya: Rp 27.900.000.',
-  'Cari dokumen TDS material': 'Berikut dokumen TDS untuk material "Cat A": [Download TDS.pdf]'
+  'Berapa kebutuhan cat untuk proyek Gudang Peluru Bandung?': 'Proyek Gudang Peluru Bandung memiliki area Exterior 5100m², Material A memiliki daya sebar 10m²/liter dan 2 lapis, maka kebutuhan cat adalah sekitar 1020 liter.',
+  'Berapa rata-rata margin untuk material A di bulan Februari?': 'Material A memiliki margin rata-rata 28.5% di bulan Februari, dibandingkan dengan Januari sebesar 24.5%. Ada kenaikan 4% dibandingkan dengan Januari!',
+  'Cari TDS material A': 'Berikut dokumen TDS untuk material "Cat A": [Download TDS.pdf]',
+  'Kapan Invoice Proyek D jatuh tempo?': 'Invoice proyek D dengan nomor invoice INV-3232 akan jatuh tempo pada tanggal 20 April 2024. Dari 3 Invoice yang telah dikirim, 2 Invoice telah dibayar, dan 1 Invoice belum dibayar.',
+  'Berapa orang dari sales team yang telah mencapai target bulan ini?': 'Dari 5 sales team, 3 sales team telah mencapai target bulan ini, yaitu Andi Santoso (108%), Sari Wijaya (102%), dan Budi Hartono (115%). 2 sales team belum mencapai target, yaitu Deni Kurnia (87%) dan Maya Putri (94%).'
 }
 
 const AIShowcase = () => {

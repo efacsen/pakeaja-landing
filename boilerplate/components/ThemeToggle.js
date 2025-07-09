@@ -16,12 +16,12 @@ const ThemeToggle = ({ className = '' }) => {
     <button
       onClick={toggleTheme}
       className={`theme-toggle-btn ${className}`}
-      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       <div className="icon-wrapper">
-        {theme === 'light' ? (
-          // Sun icon for light mode
+        {theme === 'dark' ? (
+          // Sun icon for switching to light mode
           <svg
             className="w-5 h-5 sun-icon"
             fill="currentColor"
@@ -35,7 +35,7 @@ const ThemeToggle = ({ className = '' }) => {
             />
           </svg>
         ) : (
-          // Moon icon for dark mode
+          // Moon icon for switching to dark mode
           <svg
             className="w-5 h-5 moon-icon"
             fill="currentColor"

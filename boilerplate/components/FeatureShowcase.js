@@ -102,10 +102,7 @@ const FeatureShowcase = ({ className = '' }) => {
 
   // Mobile carousel scroll-to-index
   useEffect(() => {
-    if (isMobile && carouselRef.current) {
-      const card = carouselRef.current.children[activeTab]
-      card?.scrollIntoView({ behavior: 'smooth', inline: 'center' })
-    }
+    // Removed scrollIntoView to prevent auto-scroll to top after swipe or dot click
   }, [activeTab, isMobile])
 
   return (
@@ -123,6 +120,17 @@ const FeatureShowcase = ({ className = '' }) => {
         {/* MOBILE: Horizontal Carousel with Snap */}
         {isMobile ? (
           <>
+            {/* Top Dot Indicators */}
+            <div className="flex justify-center gap-2 mb-4">
+              {features.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`w-2 h-2 rounded-full transition-colors ${idx === activeTab ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'}`}
+                  onClick={() => setActiveTab(idx)}
+                  aria-label={`Go to feature ${idx + 1}`}
+                />
+              ))}
+            </div>
             <div
               ref={carouselRef}
               className="flex flex-row overflow-x-auto snap-x snap-mandatory -mx-4 px-2 pb-4 no-scrollbar"
@@ -135,7 +143,7 @@ const FeatureShowcase = ({ className = '' }) => {
                   className="min-w-[85vw] max-w-[85vw] mr-4 snap-center flex-shrink-0"
                   style={{ scrollSnapAlign: 'center' }}
                 >
-                  <div className="glass-card p-6 rounded-2xl h-full flex flex-col justify-between shadow-lg">
+                  <div className="glass-card p-6 rounded-2xl h-full flex flex-col justify-between shadow-lg dark:bg-gray-900/80">
                     {feature.id === 'ai-assistant' ? (
                       <AIShowcase />
                     ) : (
@@ -145,18 +153,18 @@ const FeatureShowcase = ({ className = '' }) => {
                             <feature.icon className="w-6 h-6 text-white" />
                           </div>
                           <div>
-                            <h3 className="text-lg font-bold text-gray-900 mb-1">{feature.title}</h3>
-                            <p className="text-xs text-gray-500">{feature.subtitle}</p>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{feature.title}</h3>
+                            <p className="text-xs text-gray-500 dark:text-gray-300">{feature.subtitle}</p>
                           </div>
                         </div>
-                        <p className="text-base text-gray-700 leading-relaxed">{feature.description}</p>
+                        <p className="text-base text-gray-700 dark:text-gray-100 leading-relaxed">{feature.description}</p>
                         <ul className="space-y-2">
                           {feature.points.map((point, pointIndex) => (
                             <li key={pointIndex} className="flex items-start gap-2">
-                              <span className="inline-block w-4 h-4 mt-1 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg className="w-3 h-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                              <span className="inline-block w-4 h-4 mt-1 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center">
+                                <svg className="w-3 h-3 text-blue-500 dark:text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                               </span>
-                              <span className="text-gray-900 text-sm">{point}</span>
+                              <span className="text-gray-900 dark:text-white text-sm">{point}</span>
                             </li>
                           ))}
                         </ul>
@@ -166,20 +174,13 @@ const FeatureShowcase = ({ className = '' }) => {
                 </div>
               ))}
             </div>
-            {/* Dot Indicators */}
+            {/* Bottom Dot Indicators */}
             <div className="flex justify-center gap-2 mt-2">
               {features.map((_, idx) => (
                 <button
                   key={idx}
-                  className={`w-2 h-2 rounded-full transition-colors ${idx === activeTab ? 'bg-blue-600' : 'bg-gray-300'}`}
-                  onClick={() => {
-                    setActiveTab(idx)
-                    // Scroll to the selected card
-                    if (carouselRef.current) {
-                      const card = carouselRef.current.children[idx]
-                      card?.scrollIntoView({ behavior: 'smooth', inline: 'center' })
-                    }
-                  }}
+                  className={`w-2 h-2 rounded-full transition-colors ${idx === activeTab ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-700'}`}
+                  onClick={() => setActiveTab(idx)}
                   aria-label={`Go to feature ${idx + 1}`}
                 />
               ))}
@@ -189,16 +190,16 @@ const FeatureShowcase = ({ className = '' }) => {
           // DESKTOP: Tabbed Layout (unchanged)
           <>
             <div className="flex justify-center mb-8">
-              <div className="glass-card p-2 rounded-xl">
+              <div className="p-8 rounded-2xl bg-white/70 backdrop-blur-md border border-white/40 shadow-2xl dark:bg-gray-900/70 dark:border-white/10 my-2">
                 <div className="flex gap-2">
                   {features.map((feature, index) => (
                     <button
                       key={feature.id}
                       onClick={() => setActiveTab(index)}
-                      className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center ${
+                      className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center my-2 ${
                         activeTab === index
-                          ? 'bg-blue-100 text-blue-700 border-2 border-blue-600 shadow-lg'
-                          : 'text-gray-500 hover:text-blue-700 hover:bg-blue-50 border-2 border-transparent'
+                          ? 'bg-blue-100 text-blue-700 border-2 border-blue-600 shadow-lg dark:bg-blue-900/40 dark:text-blue-200 dark:border-blue-400'
+                          : 'text-gray-500 hover:text-blue-700 hover:bg-blue-50 border-2 border-transparent dark:text-gray-300'
                       }`}
                     >
                       <feature.icon className="w-5 h-5 mr-2" />
@@ -215,7 +216,7 @@ const FeatureShowcase = ({ className = '' }) => {
                     key={feature.id}
                     className={`w-full flex-shrink-0 ${index !== activeTab ? 'hidden' : ''}`}
                   >
-                    <div className="glass-card p-8 rounded-2xl">
+                    <div className="p-8 rounded-2xl bg-white/70 backdrop-blur-md border border-white/40 shadow-2xl dark:bg-gray-900/70 dark:border-white/10">
                       {feature.id === 'ai-assistant' ? (
                         <AIShowcase />
                       ) : (
@@ -227,15 +228,15 @@ const FeatureShowcase = ({ className = '' }) => {
                                 <feature.icon className="w-8 h-8 text-white" />
                               </div>
                               <div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                                <h3 className="text-2xl font-bold text-black dark:text-white mb-1">
                                   {feature.title}
                                 </h3>
-                                <p className="text-gray-500">
+                                <p className="text-black dark:text-gray-300">
                                   {feature.subtitle}
                                 </p>
                               </div>
                             </div>
-                            <p className="text-lg text-gray-700 leading-relaxed">
+                            <p className="text-lg text-black dark:text-gray-100 leading-relaxed">
                               {feature.description}
                             </p>
                             <div className="space-y-3">
@@ -244,12 +245,12 @@ const FeatureShowcase = ({ className = '' }) => {
                                   key={pointIndex} 
                                   className="flex items-start gap-3 group"
                                 >
-                                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center mt-0.5 group-hover:bg-blue-200 transition-colors">
-                                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <div className="w-6 h-6 rounded-full bg-blue-500/10 flex items-center justify-center mt-0.5 group-hover:bg-blue-200 dark:bg-blue-800 dark:group-hover:bg-blue-700 transition-colors">
+                                    <svg className="w-4 h-4 text-blue-600 dark:text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                   </div>
-                                  <span className="text-gray-900 leading-relaxed">
+                                  <span className="text-black dark:text-white leading-relaxed">
                                     {point}
                                   </span>
                                 </div>
@@ -258,16 +259,16 @@ const FeatureShowcase = ({ className = '' }) => {
                           </div>
                           {/* Feature Visual */}
                           <div className="relative">
-                            <div className="glass-card p-6 rounded-xl bg-blue-50">
+                            <div className="glass-card p-6 rounded-xl bg-blue-50 dark:bg-gray-800/80 border border-white/20 dark:border-gray-700">
                               <div className="space-y-4">
                                 <div className="flex items-center gap-3">
                                   <div className={`w-8 h-8 rounded-lg ${feature.color} flex items-center justify-center`}>
                                     <feature.icon className="w-5 h-5 text-white" />
                                   </div>
                                   <div className="flex-1">
-                                    <div className="h-2 bg-blue-100 rounded-full">
+                                    <div className="h-2 bg-blue-100 dark:bg-blue-900 rounded-full">
                                       <div 
-                                        className="h-full bg-blue-600 rounded-full transition-all duration-1000"
+                                        className="h-full bg-blue-600 dark:bg-blue-400 rounded-full transition-all duration-1000"
                                         style={{ width: `${(index + 1) * 20}%` }}
                                       />
                                     </div>
@@ -275,12 +276,12 @@ const FeatureShowcase = ({ className = '' }) => {
                                 </div>
                                 <div className="space-y-2">
                                   {[1, 2, 3].map((item) => (
-                                    <div key={item} className="flex items-center gap-3 p-2 bg-blue-50 rounded-lg">
-                                      <div className="w-4 h-4 rounded-full bg-blue-100"></div>
+                                    <div key={item} className="flex items-center gap-3 p-2 bg-blue-50 dark:bg-gray-900/60 rounded-lg">
+                                      <div className="w-4 h-4 rounded-full bg-blue-100 dark:bg-blue-900"></div>
                                       <div className="flex-1">
-                                        <div className="h-2 bg-blue-100 rounded-full">
+                                        <div className="h-2 bg-blue-100 dark:bg-blue-900 rounded-full">
                                           <div 
-                                            className="h-full bg-blue-600 rounded-full"
+                                            className="h-full bg-blue-600 dark:bg-blue-400 rounded-full"
                                             style={{ width: `${Math.random() * 80 + 20}%` }}
                                           />
                                         </div>

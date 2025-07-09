@@ -34,7 +34,7 @@ export default function ComingSoonCombinedPage() {
       <Confetti active={showConfetti} />
       
       <Head>
-        <title>PakeAja - Coming Soon | Aplikasi Manajemen Proyek Cat Pertama di Indonesia</title>
+        <title>Pake Aja Dulu - Aplikasi Aplikator Cat Pertama di Indonesia</title>
         <meta name="description" content="Aplikasi manajemen proyek cat pertama di Indonesia. Solusi lengkap untuk tracking proyek, invoice otomatis, dan AI assistant. Coming Soon Q1 2024!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -65,11 +65,11 @@ export default function ComingSoonCombinedPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">P</span>
+                  <span className="text-white font-bold text-xl">P A D</span>
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold text-primary">PakeAja</h1>
-                  <p className="text-xs text-tertiary">Coming Soon</p>
+                  <h1 className="text-2xl font-bold text-primary">Pake Aja Dulu</h1>
+                  <p className="text-xs text-tertiary">Aplikasi Aplikator Cat Pertama di Indonesia</p>
                 </div>
               </div>
               
@@ -134,7 +134,7 @@ export default function ComingSoonCombinedPage() {
             <div className="text-center">
               <div className="flex items-center justify-center space-x-4 mb-6">
                 <div className="w-8 h-8 bg-accent-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">P</span>
+                  <span className="text-white font-bold text-lg">P A D</span>
                 </div>
                 <h4 className="text-xl font-bold text-primary">PakeAja</h4>
               </div>
