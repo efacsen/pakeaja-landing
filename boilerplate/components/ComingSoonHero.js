@@ -5,13 +5,13 @@ const ComingSoonHero = ({ onJoinWaitlist }) => {
   const [isTyping, setIsTyping] = useState(true)
 
   const texts = [
-    "Aplikasi Manajemen Proyek Cat dan Coating",
-    "Kalkulasi Kebutuhan Cat",
-    "Generate Coating Cost",
-    "Database TDS Material",
-    "Reporting Harian Sales", 
-    "AI Assistant untuk Aplikator",
-    "Solusi untuk Semua Masalah Kalian"
+    "Aplikasi Manajemen Proyek Cat yang Bikin Hidup Enak",
+    "Kalkulasi Kebutuhan Cat Anti Salah Hitung",
+    "Generate Coating Cost yang Akurat Banget",
+    "Database TDS Material Lengkap Abis",
+    "Reporting Harian Sales yang Gak Ribet", 
+    "AI Assistant Pinter buat Aplikator",
+    "Solusi Buat Semua Masalah Kalian, Serius!"
   ]
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const ComingSoonHero = ({ onJoinWaitlist }) => {
           {/* Main Heading */}
           <div className="fade-in-up">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 text-primary leading-tight">
-              <span className="block mb-1 sm:mb-2 text-lg sm:text-xl md:text-2xl lg:text-4xl">Pertama di Indonesia:</span>
+              <span className="block mb-1 sm:mb-2 text-lg sm:text-xl md:text-2xl lg:text-4xl">Bro, Ini Pertama di Indonesia:</span>
               <span 
                 className={`text-accent transition-all duration-500 block ${
                   isTyping ? 'opacity-100' : 'opacity-50'
@@ -49,8 +49,8 @@ const ComingSoonHero = ({ onJoinWaitlist }) => {
             </h1>
             
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-secondary max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-              Era baru untuk Solusi lengkap yang akan mengubah cara kerja aplikator cat dan coating di Indonesia. 
-              <strong className="text-accent"> Selamanya.</strong>
+              Era baru buat aplikator cat yang udah males jadi 'tukang besok transfer'. Solusi lengkap yang bakal ubah cara kerja lu 
+              <strong className="text-accent"> selamanya, bro!</strong>
             </p>
 
 

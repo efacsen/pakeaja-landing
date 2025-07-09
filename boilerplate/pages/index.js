@@ -99,10 +99,10 @@ export default function ComingSoonCombinedPage() {
           <div className="container mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center mb-8 sm:mb-10 md:mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-primary">
-                Ini Percakapan Nyata di Grup WA Aplikator
+                Ini Percakapan Nyata di Grup WA Aplikator, Bro!
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-secondary max-w-xl sm:max-w-2xl mx-auto px-4 sm:px-0">
-                Keluhan yang sama dari Sabang sampai Merauke. Saatnya ada solusi!
+                Keluhan yang sama dari Sabang sampai Merauke. Saatnya ada solusi yang bener!
               </p>
             </div>
             
@@ -112,7 +112,7 @@ export default function ComingSoonCombinedPage() {
             
             <div className="text-center mt-6 sm:mt-8">
               <p className="text-base sm:text-lg text-secondary px-4 sm:px-0">
-                <strong className="text-accent">Familiar dengan masalah ini?</strong> Kami punya solusinya! 👇
+                <strong className="text-accent">Familiar dengan masalah ini bro?</strong> Kami punya solusinya! 👇
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function ComingSoonCombinedPage() {
               </div>
               
               <p className="text-tertiary text-xs sm:text-sm">
-                Made with ❤️<br/>
+                Made with ❤️ buat para jagoan cat Indonesia! 🇮🇩<br/>
                 Dibuat oleh Aplikator untuk Aplikator
               </p>
               

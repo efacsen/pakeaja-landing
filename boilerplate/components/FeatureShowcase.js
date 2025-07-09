@@ -12,72 +12,72 @@ const FeatureShowcase = ({ className = '' }) => {
     {
       id: 'project-management',
       title: 'Manajemen Proyek',
-      subtitle: 'Kelola Proyek dengan Sistem Lengkap',
+      subtitle: 'Kelola Proyek Gak Pake Ribet',
       icon: ChartIcon,
-      description: 'Sistem manajemen proyek yang lengkap untuk mengatur semua aspek pekerjaan aplikator cat.',
+      description: 'Sistem manajemen proyek yang lengkap banget buat mengatur semua aspek pekerjaan lu. Gak perlu pusing lagi!',
       points: [
-        'Anggaran Proyek Terintegrasi',
-        'Timeline Visual (Gantt Chart, Kanban, Kalender)',
-        'Pelacakan Material Real-time',
-        'Laporan Site Digital',
-        'Dokumen Digital (BAST, BAP, QA Checklist, Invoice)'
+        'Anggaran Proyek Terintegrasi - tinggal input, auto hitung!',
+        'Timeline Visual yang kece (Gantt Chart, Kanban, Kalender)',
+        'Pelacakan Material Real-time - tau persis stok dimana',
+        'Laporan Site Digital - gak perlu tulis manual',
+        'Dokumen Digital lengkap (BAST, BAP, QA Checklist, Invoice)'
       ],
       color: 'bg-blue-500'
     },
     {
       id: 'material-calculator',
       title: 'Kalkulator & Manajemen Material',
-      subtitle: 'Hitung Kebutuhan Material dengan Akurat',
+      subtitle: 'Hitung Kebutuhan Material Anti Salah',
       icon: CalculatorIcon,
-      description: 'Sistem kalkulasi material yang akurat dan database lengkap untuk semua kebutuhan proyek cat.',
+      description: 'Sistem kalkulasi material yang akurat banget dan database lengkap buat semua kebutuhan proyek cat lu. Gak bakal salah hitung lagi!',
       points: [
-        'Kalkulator Kebutuhan Material',
-        'Kalkulator Biaya Coating',
-        'Riwayat Harga Material',
-        'Database TDS Material'
+        'Kalkulator Kebutuhan Material - akurat sampai detail',
+        'Kalkulator Biaya Coating - langsung tau total biaya',
+        'Riwayat Harga Material - pantau fluktuasi harga',
+        'Database TDS Material - lengkap dari A sampai Z'
       ],
       color: 'bg-green-500'
     },
     {
       id: 'sales-reporting',
       title: 'Laporan Tim Sales',
-      subtitle: 'Pantau Performa Tim Sales & KPI',
+      subtitle: 'Pantau Performa Tim Sales yang Kece',
       icon: TrendingIcon,
-      description: 'Sistem pelaporan dan tracking yang komprehensif untuk tim sales dan aktivitas canvassing.',
+      description: 'Sistem pelaporan dan tracking yang komprehensif buat tim sales dan aktivitas canvassing. Semua data jelas, performa naik!',
       points: [
-        'Laporan harian melalui webapp/mobile',
-        'Kanban otomatis untuk setiap tahap sales',
-        'Dashboard KPI Tim Sales',
-        'Riwayat canvassing Google Maps'
+        'Laporan harian via webapp/mobile - praktis banget',
+        'Kanban otomatis buat setiap tahap sales - rapi!',
+        'Dashboard KPI Tim Sales - performa real-time',
+        'Riwayat canvassing Google Maps - track dimana aja'
       ],
       color: 'bg-orange-500'
     },
     {
       id: 'client-portal',
       title: 'Portal Client',
-      subtitle: 'Akses Khusus untuk Client',
+      subtitle: 'Akses Khusus yang Bikin Client Happy',
       icon: UsersIcon,
-      description: 'Berikan akses khusus untuk client dalam tracking dan monitoring proyek mereka.',
+      description: 'Berikan akses khusus buat client dalam tracking dan monitoring proyek mereka. Client jadi percaya dan puas!',
       points: [
-        'Pelacakan pengiriman material',
-        'Tracking progress proyek',
-        'Monitoring pekerjaan maintenance',
-        'Sistem klaim garansi',
-        'Visibilitas tahap invoice'
+        'Pelacakan pengiriman material - client tau kapan datang',
+        'Tracking progress proyek - update real-time',
+        'Monitoring pekerjaan maintenance - after sales mantap',
+        'Sistem klaim garansi - mudah dan jelas',
+        'Visibilitas tahap invoice - transparansi penuh'
       ],
       color: 'bg-purple-500'
     },
     {
       id: 'ai-assistant',
       title: 'Asisten AI',
-      subtitle: 'Asisten Perusahaan yang Pintar',
+      subtitle: 'Asisten Bisnis yang Jagoan!',
       icon: StarIcon,
-      description: 'Asisten pintar yang akan membantu menjawab pertanyaan seputar informasi yang berada di perusahaan, memberikan insight bisnis perusahaan kamu dengan data yang ada.',
+      description: 'Asisten pinter yang bakal bantu lu jawab pertanyaan seputar bisnis, kasih insight kece dari data perusahaan lu. Tinggal tanya aja, langsung dijawab!',
       points: [
-        'Tanya semua hal yang berhubungan dengan bisnis perusahaan kamu',
-        'Data Analisis tidak perlu repot lagi',
-        'Ambil keputusan berdasarkan real data perusahaan kamu',
-        'Cari Dokumen proyek, TDS hingga invoice dalam satu chatroom'
+        'Tanya apapun soal bisnis lu, langsung dijawab',
+        'Analisis data gak pake ribet lagi',
+        'Ambil keputusan berdasarkan data real perusahaan',
+        'Cari dokumen proyek, TDS, invoice dalam satu chat'
       ],
       color: 'bg-indigo-500'
     }
@@ -122,10 +122,10 @@ const FeatureShowcase = ({ className = '' }) => {
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-700">
-            Apa yang Sedang Kami Bangun
+            Apa yang Lagi Kami Bangun Buat Kalian
           </h2>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-            Solusi lengkap untuk semua masalah yang kalian alami
+            Solusi lengkap buat semua masalah yang bikin kalian pusing, serius!
           </p>
         </div>
 

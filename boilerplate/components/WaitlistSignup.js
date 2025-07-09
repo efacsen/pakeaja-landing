@@ -12,7 +12,7 @@ const WaitlistSignup = ({ onSuccess }) => {
     
     if (!email || email.length === 0) {
       setValidationState('empty')
-      setHint('🚀 Masukkan email untuk notifikasi launch')
+      setHint('🚀 Masukkan email buat notifikasi launch')
       return false
     }
     
@@ -109,11 +109,11 @@ const WaitlistSignup = ({ onSuccess }) => {
               </div>
               
               <h3 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
-                Jadi yang Pertama Tahu!
+                Jadi yang Pertama Tahu, Bro!
               </h3>
               <p className="text-lg text-secondary">
                 Dapatkan notifikasi saat PakeAja siap launch + 
-                <strong className="text-accent"> akses prioritas eksklusif</strong> untuk early adopters
+                <strong className="text-accent"> akses prioritas eksklusif</strong> buat early adopters kayak lu!
               </p>
             </div>
 
@@ -209,10 +209,10 @@ const WaitlistSignup = ({ onSuccess }) => {
               <div className="mt-6 p-4 bg-success/10 border border-success/20 rounded-lg text-center animate-slideIn">
                 <div className="text-2xl mb-2">🎉</div>
                 <p className="text-success font-semibold">
-                  Yeay! Kamu di posisi #{position} dalam waitlist!
+                  Yeay! Lu di posisi #{position} dalam waitlist, mantap!
                 </p>
                 <p className="text-sm text-success/80 mt-1">
-                  Cek email untuk konfirmasi dan bonus content eksklusif
+                  Cek email buat konfirmasi dan bonus content eksklusif
                 </p>
               </div>
             )}
@@ -221,7 +221,7 @@ const WaitlistSignup = ({ onSuccess }) => {
             {status === 'error' && (
               <div className="mt-6 p-4 bg-danger/10 border border-danger/20 rounded-lg text-center animate-shake">
                 <p className="text-danger font-semibold">
-                  Oops! Ada masalah. Coba lagi ya!
+                  Oops! Ada masalah nih. Coba lagi ya bro!
                 </p>
               </div>
             )}
@@ -230,7 +230,7 @@ const WaitlistSignup = ({ onSuccess }) => {
             <div className="mt-8 pt-6 border-t border-secondary/20">
               <div className="text-center space-y-4">
                 <p className="text-sm text-secondary">
-                  Atau coba versi MVP kami sekarang:
+                  Atau coba versi MVP kami sekarang bro:
                 </p>
                 <a
                   href="https://css.pakeaja.com"
