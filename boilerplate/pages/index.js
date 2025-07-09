@@ -49,11 +49,25 @@ export default function PakeAjaLandingPage() {
   }
 
   const scrollToSignup = () => {
-    document.getElementById('signup')?.scrollIntoView({ behavior: 'smooth' })
+    if (typeof document !== 'undefined') {
+      document.getElementById('signup')?.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
-  // Prevent hydration mismatch
-  if (!mounted) return null
+  // Prevent hydration mismatch - render a minimal version during SSR
+  if (!mounted) {
+    return (
+      <div className="bg-primary min-h-screen">
+        <div className="container mx-auto px-6 md:px-8 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-primary">
+              Loading...
+            </h2>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
