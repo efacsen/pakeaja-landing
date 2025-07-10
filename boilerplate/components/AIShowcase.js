@@ -39,17 +39,47 @@ const AIShowcase = (props) => {
     { sender: 'ai', text: 'Halo bro! Gue asisten AI PakeAja. Mau tanya apa nih? Pilih pertanyaan di bawah atau ketik sendiri!' }
   ])
   const [mobileIsTyping, setMobileIsTyping] = useState(false)
+  const [highlightLatest, setHighlightLatest] = useState(false)
+  const [highlightUser, setHighlightUser] = useState(false)
+  const userMessageRef = useRef(null)
+  
   const handleMobileQuestion = (q) => {
+    // Add user message
     setMobileMessages((msgs) => [...msgs, { sender: 'user', text: q }])
-    setMobileIsTyping(true)
+    
+    // Mobile-only: First highlight user message
+    if (isMobile) {
+      setTimeout(() => {
+        setHighlightUser(true)
+        userMessageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        
+        // Remove user highlight after brief moment
+        setTimeout(() => setHighlightUser(false), 1500)
+      }, 100)
+    }
+    
+    // Start AI typing after brief delay
+    setTimeout(() => {
+      setMobileIsTyping(true)
+    }, 800)
+    
+    // AI responds after typing delay
     setTimeout(() => {
       setMobileMessages((msgs) => [...msgs, { sender: 'ai', text: MOCK_ANSWERS[q] || 'Waduh, gue belum tau jawaban yang ini bro. Coba tanya yang lain deh!' }])
       setMobileIsTyping(false)
-    }, 1200)
-    setTimeout(() => {
-      mobileChatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-      if (props.scrollToAICard) props.scrollToAICard()
-    }, 0)
+      
+      // Mobile-only: Then highlight AI response
+      if (isMobile) {
+        setTimeout(() => {
+          setHighlightLatest(true)
+          mobileChatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+          
+          // Remove AI highlight after animation
+          setTimeout(() => setHighlightLatest(false), 2000)
+        }, 100)
+      }
+    }, 2000)
+    
     setShowQuestions(false)
   }
 
@@ -880,22 +910,43 @@ const AIShowcase = (props) => {
   if (!hasMounted) return null
   if (isMobile) {
     return (
-      <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-4 flex flex-col min-h-[340px]">
+      <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-4 flex flex-col min-h-[500px]">
         <div className="font-bold text-lg text-blue-700 mb-2 text-center">Coba Tanya AI PakeAja, Bro!</div>
-        <div className="flex-1 overflow-y-auto mb-3" style={{ maxHeight: 220 }}>
-          {mobileMessages.map((msg, i) => (
-            <div key={i} className={`flex mb-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {msg.sender === 'ai' && (
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
-                  <span role="img" aria-label="AI">🤖</span>
+        <div className="flex-1 overflow-y-auto mb-3" style={{ maxHeight: 350 }}>
+          {mobileMessages.map((msg, i) => {
+            const isLatestAI = msg.sender === 'ai' && i === mobileMessages.length - 1
+            const isLatestUser = msg.sender === 'user' && i === mobileMessages.length - 1
+            const shouldHighlightAI = isLatestAI && highlightLatest
+            const shouldHighlightUser = isLatestUser && highlightUser
+            
+            return (
+              <div 
+                key={i} 
+                ref={isLatestUser ? userMessageRef : null}
+                className={`flex mb-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                {msg.sender === 'ai' && (
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
+                    <span role="img" aria-label="AI">🤖</span>
+                  </div>
+                )}
+                <div className={`px-4 py-2 rounded-xl text-sm max-w-[75%] transition-all duration-500 ${
+                  msg.sender === 'user' 
+                    ? `bg-blue-600 text-white ${
+                        shouldHighlightUser ? 'ring-2 ring-orange-400 ring-opacity-75 shadow-lg scale-105' : ''
+                      }`
+                    : `bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white ${
+                        shouldHighlightAI ? 'ring-2 ring-blue-400 ring-opacity-75 shadow-lg scale-105' : ''
+                      }`
+                }`}>
+                  {msg.text}
                 </div>
-              )}
-              <div className={`px-4 py-2 rounded-xl text-sm max-w-[75%] ${msg.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'}`}>{msg.text}</div>
-              {msg.sender === 'user' && (
-                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center ml-2 font-bold">U</div>
-              )}
-            </div>
-          ))}
+                {msg.sender === 'user' && (
+                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center ml-2 font-bold">U</div>
+                )}
+              </div>
+            )
+          })}
           {mobileIsTyping && (
             <div className="flex items-center mb-2">
               <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">

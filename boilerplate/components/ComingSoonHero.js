@@ -49,8 +49,8 @@ const ComingSoonHero = ({ onJoinWaitlist }) => {
             </h1>
             
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-secondary max-w-xl sm:max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-              Era baru buat aplikator cat yang udah males jadi 'tukang besok transfer'. Solusi lengkap yang bakal ubah cara kerja lu 
-              <strong className="text-accent"> selamanya, bro!</strong>
+              Era baru untuk Solusi lengkap yang akan mengubah cara kerja aplikator cat dan coating di Indonesia. 
+              <strong className="text-accent"> Selamanya.</strong>
             </p>
 
 

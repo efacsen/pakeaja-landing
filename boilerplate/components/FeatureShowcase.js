@@ -14,7 +14,7 @@ const FeatureShowcase = ({ className = '' }) => {
       title: 'Manajemen Proyek',
       subtitle: 'Kelola Proyek Gak Pake Ribet',
       icon: ChartIcon,
-      description: 'Sistem manajemen proyek yang lengkap banget buat mengatur semua aspek pekerjaan lu. Gak perlu pusing lagi!',
+      description: 'Sistem manajemen proyek yang lengkap untuk mengatur semua aspek pekerjaan kamu. Praktis dan mudah digunakan!',
       points: [
         'Anggaran Proyek Terintegrasi - tinggal input, auto hitung!',
         'Timeline Visual yang kece (Gantt Chart, Kanban, Kalender)',
@@ -29,7 +29,7 @@ const FeatureShowcase = ({ className = '' }) => {
       title: 'Kalkulator & Manajemen Material',
       subtitle: 'Hitung Kebutuhan Material Anti Salah',
       icon: CalculatorIcon,
-      description: 'Sistem kalkulasi material yang akurat banget dan database lengkap buat semua kebutuhan proyek cat lu. Gak bakal salah hitung lagi!',
+      description: 'Sistem kalkulasi material yang sangat akurat dan database lengkap untuk semua kebutuhan proyek cat kamu. Tidak akan salah hitung lagi!',
       points: [
         'Kalkulator Kebutuhan Material - akurat sampai detail',
         'Kalkulator Biaya Coating - langsung tau total biaya',
@@ -43,12 +43,12 @@ const FeatureShowcase = ({ className = '' }) => {
       title: 'Laporan Tim Sales',
       subtitle: 'Pantau Performa Tim Sales yang Kece',
       icon: TrendingIcon,
-      description: 'Sistem pelaporan dan tracking yang komprehensif buat tim sales dan aktivitas canvassing. Semua data jelas, performa naik!',
+      description: 'Sistem pelaporan dan tracking yang komprehensif untuk tim sales dan aktivitas canvassing. Semua data jelas, performa meningkat!',
       points: [
-        'Laporan harian via webapp/mobile - praktis banget',
-        'Kanban otomatis buat setiap tahap sales - rapi!',
+        'Laporan harian via webapp/mobile - sangat praktis',
+        'Kanban otomatis untuk setiap tahap sales - rapi dan terorganisir',
         'Dashboard KPI Tim Sales - performa real-time',
-        'Riwayat canvassing Google Maps - track dimana aja'
+        'Riwayat canvassing Google Maps - tracking lokasi lengkap'
       ],
       color: 'bg-orange-500'
     },
@@ -57,11 +57,11 @@ const FeatureShowcase = ({ className = '' }) => {
       title: 'Portal Client',
       subtitle: 'Akses Khusus yang Bikin Client Happy',
       icon: UsersIcon,
-      description: 'Berikan akses khusus buat client dalam tracking dan monitoring proyek mereka. Client jadi percaya dan puas!',
+      description: 'Berikan akses khusus untuk client dalam tracking dan monitoring proyek mereka. Client menjadi lebih percaya dan puas!',
       points: [
-        'Pelacakan pengiriman material - client tau kapan datang',
+        'Pelacakan pengiriman material - client tahu kapan datang',
         'Tracking progress proyek - update real-time',
-        'Monitoring pekerjaan maintenance - after sales mantap',
+        'Monitoring pekerjaan maintenance - after sales yang excellent',
         'Sistem klaim garansi - mudah dan jelas',
         'Visibilitas tahap invoice - transparansi penuh'
       ],
@@ -72,10 +72,10 @@ const FeatureShowcase = ({ className = '' }) => {
       title: 'Asisten AI',
       subtitle: 'Asisten Bisnis yang Jagoan!',
       icon: StarIcon,
-      description: 'Asisten pinter yang bakal bantu lu jawab pertanyaan seputar bisnis, kasih insight kece dari data perusahaan lu. Tinggal tanya aja, langsung dijawab!',
+      description: 'Asisten pintar yang akan membantu kamu menjawab pertanyaan seputar bisnis, memberikan insight berkualitas dari data perusahaan kamu. Tinggal tanya, langsung dijawab!',
       points: [
-        'Tanya apapun soal bisnis lu, langsung dijawab',
-        'Analisis data gak pake ribet lagi',
+        'Tanya apapun soal bisnis kamu, langsung dijawab',
+        'Analisis data tanpa ribet lagi',
         'Ambil keputusan berdasarkan data real perusahaan',
         'Cari dokumen proyek, TDS, invoice dalam satu chat'
       ],
@@ -122,10 +122,10 @@ const FeatureShowcase = ({ className = '' }) => {
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-700">
-            Apa yang Lagi Kami Bangun Buat Kalian
+            Apa yang Sedang Kami Bangun untuk Kamu
           </h2>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-            Solusi lengkap buat semua masalah yang bikin kalian pusing, serius!
+            Solusi lengkap untuk semua masalah yang kamu alami dalam bisnis aplikator cat
           </p>
         </div>
 
@@ -153,9 +153,9 @@ const FeatureShowcase = ({ className = '' }) => {
                 <div
                   key={feature.id}
                   className="min-w-[85vw] max-w-[85vw] mr-4 snap-center flex-shrink-0"
-                  style={{ scrollSnapAlign: 'center' }}
+                  style={{ scrollSnapAlign: 'center', minHeight: '75vh' }}
                 >
-                  <div ref={feature.id === 'ai-assistant' ? aiCardRef : undefined} className="p-8 rounded-2xl bg-white/90 backdrop-blur-md border border-white/60 shadow-2xl dark:bg-gray-900/70 dark:border-white/10 h-full flex flex-col justify-between">
+                  <div ref={feature.id === 'ai-assistant' ? aiCardRef : undefined} className="p-8 rounded-2xl bg-white/90 backdrop-blur-md border border-white/60 shadow-2xl dark:bg-gray-900/70 dark:border-white/10 h-full flex flex-col justify-between" style={{ minHeight: '75vh' }}>
                     {feature.id === 'ai-assistant' ? (
                       <AIShowcase scrollToAICard={scrollToAICard} />
                     ) : (
