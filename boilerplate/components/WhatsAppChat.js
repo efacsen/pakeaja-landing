@@ -112,7 +112,7 @@ const WhatsAppChat = ({ className = '' }) => {
           <span className="text-base sm:text-lg">👷</span>
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-sm sm:text-base truncate">Aplikator Cat Indonesia</h3>
+          <h3 className="font-semibold text-sm sm:text-base truncate">Grup Keluh Kesah Aplikator</h3>
           <p className="text-xs sm:text-sm opacity-90">573 members</p>
         </div>
         <div className="flex gap-1 sm:gap-2">
