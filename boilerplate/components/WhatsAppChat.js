@@ -19,7 +19,7 @@ const WhatsAppChat = ({ className = '' }) => {
       sender: 'Andi Wijaya',
       avatar: 'AW',
       time: '10:25',
-      message: 'Waduh sama banget! Client gue sering lupa bayar DP. Bilang "besok transfer ya bang", besoknya malah ghoib 😂',
+      message: 'Waduh sama banget! Client aku sering lupa bayar DP. Bilang "besok transfer ya bang", besoknya malah ghoib 😂',
       type: 'text'
     },
     {
@@ -37,14 +37,14 @@ const WhatsAppChat = ({ className = '' }) => {
       time: '10:27',
       message: '🎤 Voice message (0:15)',
       type: 'voice',
-      voiceText: 'Eh guys, gue udah coba berbagai cara tapi tetep aja ribet. Mau bikin invoice yang rapi susah banget, client jadi meragukan kualitas kita'
+      voiceText: 'Eh guys, aku udah coba berbagai cara tapi tetep aja ribet. Mau bikin invoice yang rapi susah banget, client jadi meragukan kualitas kita'
     },
     {
       id: 5,
       sender: 'Maya Putri',
       avatar: 'MP',
       time: '10:28',
-      message: 'Foto project gue sering ilang di chat. Susah banget kalau mau tunjukin progress ke client, jadi keliatan gak profesional 📸',
+      message: 'Foto project aku sering ilang di chat. Susah banget kalau mau tunjukin progress ke client, jadi keliatan gak profesional 📸',
       type: 'text'
     },
     {

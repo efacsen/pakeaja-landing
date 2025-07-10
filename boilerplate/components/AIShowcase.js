@@ -65,7 +65,7 @@ const AIShowcase = (props) => {
     
     // AI responds after typing delay
     setTimeout(() => {
-      setMobileMessages((msgs) => [...msgs, { sender: 'ai', text: MOCK_ANSWERS[q] || 'Waduh, gue belum tau jawaban yang ini bro. Coba tanya yang lain deh!' }])
+      setMobileMessages((msgs) => [...msgs, { sender: 'ai', text: MOCK_ANSWERS[q] || 'Waduh, aku belum tau jawaban yang ini bro. Coba tanya yang lain deh!' }])
       setMobileIsTyping(false)
       
       // Mobile-only: Then highlight AI response
@@ -211,7 +211,7 @@ const AIShowcase = (props) => {
           "5L (Galon)", 
           "20L (Pail)"
         ],
-        recommendation: "Saran gue: tambahin 5 liter ekstra buat touch-up ya bro, biar aman!"
+        recommendation: "Saran aku: tambahin 5 liter ekstra buat touch-up ya bro, biar aman!"
       }
     },
     {
